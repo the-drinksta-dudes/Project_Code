@@ -1,6 +1,6 @@
-DROP TABLE football_games;
-CREATE TABLE IF NOT EXISTS football_games (
-  visitor_name VARCHAR(30),       /* Name of the visiting team                     */
+DROP TABLE drinks;
+CREATE TABLE IF NOT EXISTS drinks (
+  name VARCHAR(30),       /* Name of the drink                     */
   home_score SMALLINT NOT NULL,   /* Final score of the game for the Buffs         */
   visitor_score SMALLINT NOT NULL,/* Final score of the game for the visiting team */
   game_date DATE NOT NULL,        /* Date of the game                              */
