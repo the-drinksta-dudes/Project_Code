@@ -24,7 +24,9 @@ app.set('view engine', 'ejs');
 app.use(express.static(__dirname + '/'));
 
 app.get('/login', function(req, res) {
-	res.render('login');
+	res.render('login', {
+		message: ''
+	});
 });
 
 app.get('/register', function(req, res) {
@@ -39,6 +41,33 @@ app.get('/home', function(req, res){
 
 app.get('/drinks', function(req, res){
 	res.render('example_drinkpage');
+});
+
+app.get('/login/submit', function(req,res){
+	var name = req.query.name;
+	var pwd = req.query.pwd;
+	console.log(name, pwd);
+	var get_pwd = "select * from users where username = '" + name +"';";
+	db.query(get_pwd)
+		.then(function(data){
+			var real_pwd = data[0].password;
+			console.log(real_pwd);
+			if(real_pwd == pwd){
+				res.render('login', {
+					message: 'success'
+				})
+			}
+			else{
+				res.render('login', {
+					message: 'warning'
+				})
+			}
+		})
+		.catch(error => {
+			res.render('login', {
+				message: 'error'
+			});
+		})
 });
 
 app.post('/register/submit', function(req,res){
