@@ -31,6 +31,13 @@ app.get('/register', function(req, res) {
 	res.render('register');
 });
 
+app.get('/home', function(req, res){
+	res.render('example_home');
+});
+
+app.get('/drinks', function(req, res){
+	res.render('example_drinkpage');
+});
 
 
 app.listen(3000);
