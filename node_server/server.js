@@ -5,19 +5,19 @@ app.use(bodyParser.json());              // support json encoded bodies
 app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 
 //Create Database Connection
-/*
+
 var pgp = require('pg-promise')();
 
 const dbConfig = {
 	host: 'localhost',
 	port: 5432,
-	database: 'football_db',
+	database: 'drinksta',
 	user: 'postgres',
-	password: 'newpassword'
+	password: 'pwd'
 };
 
 var db = pgp(dbConfig);
-*/
+
 
 // set the view engine to ejs
 app.set('view engine', 'ejs');
@@ -28,7 +28,9 @@ app.get('/login', function(req, res) {
 });
 
 app.get('/register', function(req, res) {
-	res.render('register');
+	res.render('register', {
+		message: ''
+	});
 });
 
 app.get('/home', function(req, res){
@@ -39,6 +41,59 @@ app.get('/drinks', function(req, res){
 	res.render('example_drinkpage');
 });
 
-
+app.post('/register/submit', function(req,res){
+	var name = req.body.name;
+	var username = req.body.username;
+	var emailAddress = req.body.emailAddress;
+	var password = req.body.passwordFirst;
+	var cpassword = req.body.passwordConfirm;
+	var age = req.body.age;
+	console.log(name, username, emailAddress, password, cpassword, age);
+	var find_id = "select max(user_id) from users;";
+	var check_user = "select * from users where username = '" + username +"';";
+	if(age == 'Yes' && password == cpassword){
+		/*db.query(find_id)
+			.then(function(max){
+				var id = max[0].max + 1;
+				var insert = "INSERT INTO users VALUES(" + id + ",'" + name + "','" + username +"','" 
+							+ password+ "','"+ emailAddress+"');";
+				db.query(insert)
+					.then(function(result){
+						console.log("success");
+					})
+			})*/
+		db.task('get-everything', task =>{
+			return task.batch([
+				task.any(find_id),
+				task.any(check_user)
+			])
+		})
+		.then(info =>{
+			var id = info[0][0].max +1;
+			console.log(info[1].length);
+			if(info[1].length>0){
+				res.render('register',{
+					message: 'warning'
+				})
+			}
+			else{
+				var insert = "INSERT INTO users VALUES(" + id + ",'" + name + "','" + username +"','" 
+							+ password+ "','"+ emailAddress+"');";
+				db.query(insert)
+					.then(function(result){
+						console.log("success");
+					})
+				res.render('register',{
+					message: 'success'
+				});
+			}
+		})
+	}
+	else{
+		res.render('register',{
+			message: 'error'
+		});
+	}
+});
 app.listen(3000);
 console.log('3000 is the magic port');
