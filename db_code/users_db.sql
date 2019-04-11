@@ -13,5 +13,4 @@ VALUES('Holden Nicoletti', 'holden.nicoletti', 'password', 'hokj6625@colorado.ed
 ('Andrew Yee', 'andrew.yee', 'password', 'anye2688@colorado.edu'),
 ('Teagan Peters', 'teagan.peters', 'password', 'tepe5782@colorado.edu'),
 ('Joshua Hamel', 'joshua.hamel', 'password', 'joha2422@colorado.edu'),
-('John Smith', 'john.smith', 'password', 'josm1111@colorado.edu'),
 ('Maxwell Sechelski', 'maxwell.sechelski', 'password', 'mase8617@colorado.edu');
