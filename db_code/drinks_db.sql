@@ -15,6 +15,7 @@ DROP TABLE drinks;
     INSERT INTO drinks(name, ID, category, ingredients, description)
     VALUES('Cosmopolitan', nextval('drinks_seq2'), 'vodka', ARRAY ['cointreau','cranberry juice','lime'], 'nice drink'),
     ('Vodka Martini', nextval('drinks_seq2'), 'vodka', ARRAY ['dry vermouth'], 'nice drink'),
+    ('Bloody Mary', nextval('drinks_seq2'), 'vodka', ARRAY ['Lemon', 'tomato juice', 'tabasco sauce', 'horseradish', 'Worcestershire sauce', 'celery', 'pepper'], 'nice drink'),
     ('Vodka Tonic', nextval('drinks_seq2'), 'vodka', ARRAY ['tonic water','lemon'], 'nice drink'),
     ('Screwdriver', nextval('drinks_seq2'), 'vodka', ARRAY ['orange juice'], 'nice drink'),
     ('Black Russian', nextval('drinks_seq2'), 'vodka', ARRAY ['Kahlua'], 'nice drink'),
