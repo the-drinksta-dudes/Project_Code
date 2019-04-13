@@ -7,14 +7,15 @@ app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 //Create Database Connection
 
 var pgp = require('pg-promise')();
+const dbConfig = process.env.DATABASE_URL;
 
-const dbConfig = {
+/*const dbConfig = {
 	host: 'localhost',
 	port: 5432,
 	database: 'drinksta',
 	user: 'postgres',
 	password: 'pwd'
-};
+};*/
 
 var db = pgp(dbConfig);
 
@@ -124,5 +125,6 @@ app.post('/register/submit', function(req,res){
 		});
 	}
 });
-app.listen(3000);
-console.log('3000 is the magic port');
+//app.listen(3000);
+//console.log('3000 is the magic port');
+app.listen(process.env.PORT);
