@@ -24,7 +24,7 @@ var db = pgp(dbConfig);
 app.set('view engine', 'ejs');
 app.use(express.static(__dirname + '/'));
 
-app.get('/login', function(req, res) {
+app.get('/', function(req, res) {
 	res.render('login', {
 		message: ''
 	});
