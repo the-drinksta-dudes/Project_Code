@@ -44,15 +44,15 @@ app.get('/drinks', function(req, res){
 	res.render('example_drinkpage');
 });
 
-app.get('/login/submit', function(req,res){
+app.get('/submit', function(req,res){
 	var name = req.query.name;
 	var pwd = req.query.pwd;
-	console.log(name, pwd);
+	//console.log(name, pwd);
 	var get_pwd = "select * from users where username = '" + name +"';";
 	db.query(get_pwd)
 		.then(function(data){
 			var real_pwd = data[0].password;
-			console.log(real_pwd);
+			//console.log(real_pwd);
 			if(real_pwd == pwd){
 				res.render('login', {
 					message: 'success'
@@ -71,14 +71,14 @@ app.get('/login/submit', function(req,res){
 		})
 });
 
-app.post('/register/submit', function(req,res){
+app.post('/register', function(req,res){
 	var name = req.body.name;
 	var username = req.body.username;
 	var emailAddress = req.body.emailAddress;
 	var password = req.body.passwordFirst;
 	var cpassword = req.body.passwordConfirm;
 	var age = req.body.age;
-	console.log(name, username, emailAddress, password, cpassword, age);
+	//console.log(name, username, emailAddress, password, cpassword, age);
 	var find_id = "select max(user_id) from users;";
 	var check_user = "select * from users where username = '" + username +"';";
 	if(age == 'Yes' && password == cpassword){
@@ -100,7 +100,7 @@ app.post('/register/submit', function(req,res){
 		})
 		.then(info =>{
 			var id = info[0][0].max +1;
-			console.log(info[1].length);
+			//console.log(info[1].length);
 			if(info[1].length>0){
 				res.render('register',{
 					message: 'warning'
@@ -111,7 +111,7 @@ app.post('/register/submit', function(req,res){
 							+ password+ "','"+ emailAddress+"');";
 				db.query(insert)
 					.then(function(result){
-						console.log("success");
+						//console.log("success");
 					})
 				res.render('register',{
 					message: 'success'
