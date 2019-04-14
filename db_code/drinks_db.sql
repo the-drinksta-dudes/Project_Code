@@ -22,7 +22,7 @@ DROP TABLE drinks;
     ('Black Russian', nextval('drinks_seq2'), 'vodka', ARRAY ['Kahlua'], 'nice drink', 'https://imgur.com/a/XZU2ENd'),
     ('Sex on the beach', nextval('drinks_seq2'), 'vodka', ARRAY ['peach schnapps', 'orange juice', 'cranberry juice'], 'nice drink', 'https://imgur.com/a/QNvpyaG'),
     ('21st Century', nextval('drinks_seq2'), 'tequila', ARRAY ['agave','lemon juice', 'Brizard White Creme de Cacao'], 'nice drink', 'https://imgur.com/a/e7OWG86'),
-    ('Manhattan Goes Hollywood', nextval('drinks_seq2'), 'tequila', ARRAY ['maple syrup','Orange Bitters'], 'nice drink', https://imgur.com/a/AaIZ4pz'),
+    ('Manhattan Goes Hollywood', nextval('drinks_seq2'), 'tequila', ARRAY ['maple syrup','Orange Bitters'], 'nice drink', 'https://imgur.com/a/AaIZ4pz'),
     ('El Gavilan', nextval('drinks_seq2'), 'tequila', ARRAY ['grapefruit juice','lime juice','syrup','cactus puree'], 'nice drink', 'https://imgur.com/a/PTcskMI'),
     ('Magui Cactus', nextval('drinks_seq2'), 'tequila', ARRAY ['mint leaves','lime juice','syrup','cactus puree', 'angostura Bitters'], 'nice drink', 'https://imgur.com/a/xqOwgRf'),
     ('Mystic Marvel', nextval('drinks_seq2'), 'tequila', ARRAY ['prickly pear puree','agave','lime juice'], 'nice drink', 'https://imgur.com/a/4vxtOCc'),
