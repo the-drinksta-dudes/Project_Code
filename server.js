@@ -71,6 +71,31 @@ app.get('/submit', function(req,res){
 		})
 });
 
+app.get('/search', function(req, res) {
+	var drink_search = 'select * from drinks where name = "'+ +'";';
+
+  db.task('get-everything', task => {
+        return task.batch([
+            task.any(drink_search)
+        ]);
+    })
+    .then(data => {
+    	res.render('search',{
+				my_title: "Drink Search",
+				drink: data[0]
+			})
+    })
+    .catch(error => {
+        // display error message in case an error
+            request.flash('error', err);
+            response.render('search', {
+                title: 'Drink Search',
+                data: ''
+            })
+    });
+
+});
+
 app.post('/register', function(req,res){
 	var name = req.body.name;
 	var username = req.body.username;

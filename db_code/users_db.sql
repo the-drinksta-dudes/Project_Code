@@ -3,9 +3,14 @@ CREATE TABLE users(
    name VARCHAR(100),
    username VARCHAR(40),
    password VARCHAR(255),
-   email VARCHAR(255)
+   email VARCHAR(255) 
 );
 
+CREATE TABLE followers(
+   user_id_followed INT REFERENCES users(user_id),
+   user_id_follower INT REFERENCES users(user_id),
+   PRIMARY KEY (user_id_followed, user_id_follower)
+  );
 
 INSERT INTO users(name, username, password, email)
 VALUES('Holden Nicoletti', 'holden.nicoletti', 'password', 'hokj6625@colorado.edu'),
@@ -14,3 +19,7 @@ VALUES('Holden Nicoletti', 'holden.nicoletti', 'password', 'hokj6625@colorado.ed
 ('Teagan Peters', 'teagan.peters', 'password', 'tepe5782@colorado.edu'),
 ('Joshua Hamel', 'joshua.hamel', 'password', 'joha2422@colorado.edu'),
 ('Maxwell Sechelski', 'maxwell.sechelski', 'password', 'mase8617@colorado.edu');
+
+INSERT INTO followers(user_id_followed, user_id_follower)
+VALUES(1,2),(1,3),(1,4),(1,5),(1,6),(2,1),(2,3),(2,4),(2,5),(2,6),(3,1),(3,2),(3,4),(3,5),(3,6),
+(4,1),(4,2),(4,3),(4,5),(4,6),(5,1),(5,2),(5,3),(5,4),(5,6),(6,1),(6,2),(6,3),(6,4),(6,5);
