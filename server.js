@@ -71,8 +71,9 @@ app.get('/submit', function(req,res){
 		})
 });
 
-app.get('/search', function(req, res) {
-	var drink_search = 'select * from drinks where name = "'+ +'";';
+app.get('/search/get_drink', function(req, res) {
+	var drink_name = req.query.drinkname;
+	var drink_search = 'select * from drinks where name = "'+ drink_name +'";';
 
   db.task('get-everything', task => {
         return task.batch([
