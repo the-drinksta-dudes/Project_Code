@@ -47,6 +47,9 @@ app.get('/search', function(req, res){
 app.get('/add-drink', function(req, res){
 	res.render('add-drink');
 });
+app.get('/User', function(req, res){
+	res.render('User');
+});
 
 app.get('/submit', function(req,res){
 	var name = req.query.name;
