@@ -1,0 +1,92 @@
+
+<% include ./partials/header %>
+<% include ./partials/menu %>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <title>Register Page</title>
+	<link rel='icon' href='../resources/img/favicon.ico' type='image/x-icon'/>
+    <!-- Bootstrap core CSS -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+	<link href="../resources/css/my_style.css" rel="stylesheet">
+  </head>
+  <body style = "background-color:#424949">
+  	<img src="../resources/img/bar2.jpg" class="img-fluid" alt="Registration Banner">
+	
+    <br>
+	<br>
+	<div class="container">
+		<form action="/add-drink" method="post">
+			<div class="form-group row">
+				<label class="col-sm-2 col-form-label" for="name" style="color:white">Drink Name</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" name="name" id="name"  placeholder="Enter Name">
+				</div>
+			</div>
+			 <fieldset class="form-group">
+				<div class="row">
+				  <legend class="col-form-label col-sm-2 pt-0" style="color:white">Category</legend>
+				  <div class="col-sm-10">
+					<div class="form-check">
+					  <input class="form-check-input" type="radio" name="category" id="vodka" value="vodka" required>
+					  <label class="form-check-label" for="vodka" style="color:white">
+						Vodka
+					  </label>
+					</div>
+					<div class="form-check">
+					  <input class="form-check-input" type="radio" name="category" id="wine" value="wine">
+					  <label class="form-check-label" for="wine" style="color:white">
+						Wine
+					  </label>
+					</div>
+					<div class="form-check">
+					  <input class="form-check-input" type="radio" name="category" id="rum" value="rum">
+					  <label class="form-check-label" for="rum" style="color:white">
+						Rum
+					  </label>
+					</div>
+					<div class="form-check">
+					  <input class="form-check-input" type="radio" name="category" id="tequila" value="tequila">
+					  <label class="form-check-label" for="tequila" style="color:white">
+						Tequila
+					  </label>
+					</div>
+					<div class="form-check">
+					  <input class="form-check-input" type="radio" name="category" id="whiskey" value="whiskey">
+					  <label class="form-check-label" for="whiskey" style="color:white">
+						Whiskey
+					  </label>
+					</div>
+					<div class="form-check">
+					  <input class="form-check-input" type="radio" name="category" id="other" value="other">
+					  <label class="form-check-label" for="other" style="color:white">
+						Other
+					  </label>
+					</div>
+				  </div>
+				</div>
+			  </fieldset>
+			 <div class="form-group row">
+				<label class="col-sm-2 col-form-label" for="ingredients" style="color:white">Ingredients</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" name="ingredients" id="ingredients"  placeholder="Enter Ingredients">
+				</div>
+			</div>
+			<div class="form-group row">
+				<label class="col-sm-2 col-form-label" for="description" style="color:white">Description</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" name="description" id="description"  placeholder="Enter Description">
+				</div>
+			</div>
+			<button class="btn btn-block btn-primary" type="submit">Submit</button>
+		</form>
+		<br>
+	</div>
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+	<script src="../resources/js/my_scripts.js"></script>
+</body>
+</html>

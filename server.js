@@ -40,8 +40,8 @@ app.get('/home', function(req, res){
 	res.render('example_home');
 });
 
-app.get('/drinks', function(req, res){
-	res.render('example_drinkpage');
+app.get('/search', function(req, res){
+	res.render('search', {drink: ''});
 });
 
 app.get('/submit', function(req,res){
@@ -89,8 +89,8 @@ app.get('/search', function(req, res) {
         // display error message in case an error
             request.flash('error', err);
             response.render('search', {
-                title: 'Drink Search',
-                data: ''
+                my_title: 'Drink Search',
+                drink: ''
             })
     });
 
