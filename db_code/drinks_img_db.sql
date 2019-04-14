@@ -24,5 +24,11 @@ DROP TABLE drinks;
     ('Manhattan Goes Hollywood', nextval('drinks_seq2'), 'https://imgur.com/a/AaIZ4pz'),
     ('El Gavilan', nextval('drinks_seq2'), 'https://imgur.com/a/PTcskMI'),
     ('Magui Cactus', nextval('drinks_seq2'), 'https://imgur.com/a/xqOwgRf'),
-    ('Mystic Marvel', nextval('drinks_seq2'), 'https://imgur.com/a/4vxtOCc')
+    ('Mystic Marvel', nextval('drinks_seq2'), 'https://imgur.com/a/4vxtOCc'),
+    ('Bishop Cocktail', nextval('drinks_seq2'), 'https://imgur.com/a/yAxVPpG'),
+    ('Kir', nextval('drinks_seq2'), 'https://imgur.com/a/yENBYVQ'),
+    ('white wine spritzer', nextval('drinks_seq2'), 'https://imgur.com/a/tjoGF6J'),
+    ('uk sour', nextval('drinks_seq2'), 'https://imgur.com/a/r6G1r5e'),
+    ('rose berry bliss', nextval('drinks_seq2'), 'https://imgur.com/a/Pwfhflb')
+    
     ;
