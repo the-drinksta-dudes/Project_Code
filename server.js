@@ -44,6 +44,10 @@ app.get('/search', function(req, res){
 	res.render('search', {drink: ''});
 });
 
+app.get('/add-drink', function(req, res){
+	res.render('/add-drink');
+});
+
 app.get('/submit', function(req,res){
 	var name = req.query.name;
 	var pwd = req.query.pwd;
