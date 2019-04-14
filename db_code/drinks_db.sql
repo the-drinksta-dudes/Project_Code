@@ -4,7 +4,7 @@ DROP TABLE drinks;
       ID SERIAL PRIMARY KEY,      /* Drink ID*/
       category VARCHAR(30),           /* Final score of the game for the visiting team */
       ingredients  TEXT[],            /* list of ingredients; strings stored in an array*/
-      description VARCHAR(50)        /* drink description; eneter short txt*/
+      description VARCHAR(200)        /* drink description; eneter short txt*/
     );
     
     CREATE SEQUENCE drinks_seq2
