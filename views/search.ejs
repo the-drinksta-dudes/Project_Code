@@ -29,6 +29,7 @@
 								<div class="card">
 									<% 
 									var image_src = '../resources/img/rumcoke.jpg';
+									var drink_name = ''
 									if(drink){ 
 										console.log("Test")
 										image_src = drink.img_src;
@@ -43,7 +44,9 @@
 									<table class="table">
 										<tr>
 											<th>Name</th>
-											<td>Rum and Coke<span id="d_name"></span></td>
+											<td>
+												<%- drink_name %>
+											<span id="d_name"></span></td>
 										</tr>
 										<tr>
 											<td>Ingredients:</td>
