@@ -165,6 +165,28 @@ app.post('/register', function(req,res){
 	}
 });
 
+app.post('/add-drink', function(req,res){
+	var name = req.body.name;
+	var category = req.body.category;
+	var ing_list = req.body.ingredients;
+	var description = req.body.description;
+	var image_link = req.body.imglink;
+	var ingredients = ing_list.split(",").map(function(item){
+		return item.trim();
+	});
+	var array_txt = "ARRAY [";
+	for (i = 0; i < ingredients.length; i++){
+		array_txt += "'"+ingredients[i]"',";
+	}
+	array_txt += "]";
+	var query =  "INSERT INTO users VALUES('" + name + "', nextval('drinks_seq2'),'" + category +"'," 
+						+ array_txt + ",'"+image_link+"');";
+	db.query(query)
+		.then(function(result){
+			res.render('home');
+		})
+});
+
 //app.listen(3000);
 //console.log('3000 is the magic port');
 app.listen(process.env.PORT);
