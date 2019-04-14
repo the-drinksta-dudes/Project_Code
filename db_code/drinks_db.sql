@@ -13,7 +13,7 @@ DROP TABLE drinks;
       increment 1;
     
     
-    INSERT INTO drinks(name, ID, category, ingredients, description)
+    INSERT INTO drinks(name, ID, category, ingredients, description, img_src)
     VALUES('Cosmopolitan', nextval('drinks_seq2'), 'vodka', ARRAY ['cointreau','cranberry juice','lime'], 'nice drink', 'https://imgur.com/a/L9mnxuI'),
     ('Vodka Martini', nextval('drinks_seq2'), 'vodka', ARRAY ['dry vermouth'], 'nice drink','https://imgur.com/a/0hJTmAy'),
     ('Bloody Mary', nextval('drinks_seq2'), 'vodka', ARRAY ['Lemon', 'tomato juice', 'tabasco sauce', 'horseradish', 'Worcestershire sauce', 'celery', 'pepper'], 'nice drink', 'https://imgur.com/a/hYTKwrm'),
