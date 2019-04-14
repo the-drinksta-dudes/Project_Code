@@ -82,6 +82,7 @@ app.get('/submit', function(req,res){
 });
 
 app.get('/search/get_drink', function(req, res) {
+	console.log("Here1")
 	var drink_name = req.query.drinkname;
 	var drink_search = 'select * from drinks where name = "'+ drink_name +'";';
 
@@ -91,13 +92,15 @@ app.get('/search/get_drink', function(req, res) {
         ]);
     })
     .then(data => {
+		console.log("Here2")
     	res.render('search',{
 				my_title: "Drink Search",
 				drink: data[0]
 			})
     })
     .catch(error => {
-        // display error message in case an error
+		// display error message in case an error
+		console.log("Here3")
             request.flash('error', err);
             response.render('search', {
                 my_title: 'Drink Search',
