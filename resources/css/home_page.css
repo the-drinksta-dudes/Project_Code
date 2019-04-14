@@ -1,0 +1,14 @@
+body
+{
+	background-color:#424949;
+	color: white;
+}
+
+.jumbotron
+{
+	color: white;
+}
+.no-padding
+{
+	padding: 0;
+}
