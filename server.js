@@ -71,6 +71,35 @@ app.get('/submit', function(req,res){
 		})
 });
 
+app.get('/search', function(req, res) {
+	var drink_search = 'select * from football_games;';
+
+  db.task('get-everything', task => {
+        return task.batch([
+            task.any(drink_search)
+        ]);
+    })
+    .then(data => {
+    	res.render('pages/team_stats',{
+				my_title: "Football Games",
+				games: data[0],
+				total_losses: data[1][0].count,
+				total_wins: data[2][0].count
+			})
+    })
+    .catch(error => {
+        // display error message in case an error
+            request.flash('error', err);
+            response.render('pages/team_stats', {
+                title: 'Footbal Games',
+                data: '',
+                total_wins: 'Error',
+                total_losses: 'Error'
+            })
+    });
+
+});
+
 app.post('/register', function(req,res){
 	var name = req.body.name;
 	var username = req.body.username;
