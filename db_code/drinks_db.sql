@@ -25,5 +25,10 @@ DROP TABLE drinks;
     ('El Gavilan', nextval('drinks_seq2'), 'tequila', ARRAY ['grapefruit juice','lime juice','syrup','cactus puree'], 'nice drink'),
     ('Magui Cactus', nextval('drinks_seq2'), 'tequila', ARRAY ['mint leaves','lime juice','syrup','cactus puree', 'angostura Bitters'], 'nice drink'),
     ('Mystic Marvel', nextval('drinks_seq2'), 'tequila', ARRAY ['prickly pear puree','agave','lime juice'], 'nice drink')
+    ('Bishop Cocktail', nextval('drinks_seq2'), 'wine', ARRAY ['red wine', 'rum', 'simple syrup', 'lime juice'], 'rum not necessary nice mix')
+    ('Kir', nextval('drinks_seq2'), 'wine', ARRAY ['white wine', 'creme de cassis'], 'Sweet liqueur with flavor of black currants. Nice mix with white wine')
+    ('White Wine Spritzer', nextval('drinks_seq2'), 'wine', ARRAY ['white wine', 'sparkling water'], 'Simple to make, nice mix of texture and taste.')
+    ('UK Sour', nextval('drinks_seq2'), 'wine', ARRAY ['red wine', 'Scotch whiskey', 'apricot liqueur', 'lemon juice', 'cinnamon syrup'], 'An INCREDIBLE mixture that brings the touch of sour, to your sweet wine collections')
+    ('Rose Berry Bliss', nextval('drinks_seq2'), 'wine', ARRAY ['rose wine', 'blueberries', 'pink lemonade', 'lemon-lime soda'], 'Generally made by the pitcher. Easy to mix. Brings the exotic to your exquisite collection')
     ;
 
