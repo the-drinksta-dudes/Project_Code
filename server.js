@@ -45,7 +45,7 @@ app.get('/search', function(req, res){
 });
 
 app.get('/add-drink', function(req, res){
-	res.render('/add-drink');
+	res.render('add-drink');
 });
 
 app.get('/submit', function(req,res){
