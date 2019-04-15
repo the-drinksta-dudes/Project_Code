@@ -175,15 +175,21 @@ app.post('/add-drink', function(req,res){
 		return item.trim();
 	});
 	var array_txt = "ARRAY [";
-	for (i = 0; i < ingredients.length; i++){
-		array_txt += "'"+ingredients[i]+"',";
+	if(ingredients.length >0){
+		array_txt += "'"+ingredients[0]+"'";
+		if (ingredients.length >1){
+			for (i = 1; i < ingredients.length; i++){
+				array_txt += ",'"+ingredients[i]+"'";
+			}
+		}
 	}
 	array_txt += "]";
-	var query =  "INSERT INTO users VALUES('" + name + "', nextval('drinks_seq2'),'" + category +"'," 
-						+ array_txt + ",'"+image_link+"');";
+	var query =  "INSERT INTO drinks VALUES('" + name + "', nextval('drinks_seq2'),'" + category +"'," 
+						+ array_txt +",'"+description+"','"+image_link+"');";
+	//console.log(query);
 	db.query(query)
 		.then(function(result){
-			res.render('home');
+			res.render('example_home');
 		})
 });
 
