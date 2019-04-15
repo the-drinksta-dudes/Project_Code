@@ -12,7 +12,7 @@ const dbConfig = process.env.DATABASE_URL;
 /*const dbConfig = {
 	host: 'localhost',
 	port: 5432,
-	database: 'drinksta',
+	database: 'drinks_db',
 	user: 'postgres',
 	password: 'pwd'
 };*/
@@ -81,10 +81,12 @@ app.get('/submit', function(req,res){
 		})
 });
 
-app.get('/search/get_drink', function(req, res) {
-	console.log("Here1")
+app.get('/search/get_drink', function(req, res)
+{
+	console.log("Here1");
 	var drink_name = req.query.drinkname;
 	var drink_search = 'select * from drinks where name = "'+ drink_name +'";';
+	console.log(drink_search);
 
   db.task('get-everything', task => {
         return task.batch([
@@ -92,7 +94,7 @@ app.get('/search/get_drink', function(req, res) {
         ]);
     })
     .then(data => {
-		console.log("Here2")
+		console.log("Here3");
     	res.render('search',{
 				my_title: "Drink Search",
 				drink: data[0]
@@ -100,7 +102,7 @@ app.get('/search/get_drink', function(req, res) {
     })
     .catch(error => {
 		// display error message in case an error
-		console.log("Here3")
+		console.log(error);
             request.flash('error', err);
             response.render('search', {
                 my_title: 'Drink Search',
