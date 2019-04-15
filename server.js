@@ -165,7 +165,7 @@ app.post('/register', function(req,res){
 	}
 });
 
-/*app.post('/add-drink', function(req,res){
+app.post('/add-drink', function(req,res){
 	var name = req.body.name;
 	var category = req.body.category;
 	var ing_list = req.body.ingredients;
@@ -176,7 +176,7 @@ app.post('/register', function(req,res){
 	});
 	var array_txt = "ARRAY [";
 	for (i = 0; i < ingredients.length; i++){
-		array_txt += "'"+ingredients[i]"',";
+		array_txt += "'"+ingredients[i]+"',";
 	}
 	array_txt += "]";
 	var query =  "INSERT INTO users VALUES('" + name + "', nextval('drinks_seq2'),'" + category +"'," 
@@ -185,7 +185,7 @@ app.post('/register', function(req,res){
 		.then(function(result){
 			res.render('home');
 		})
-});*/
+});
 
 //app.listen(3000);
 //console.log('3000 is the magic port');
