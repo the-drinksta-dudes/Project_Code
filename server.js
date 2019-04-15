@@ -165,7 +165,7 @@ app.post('/register', function(req,res){
 	}
 });
 
-app.post('/add-drink', function(req,res){
+/*app.post('/add-drink', function(req,res){
 	var name = req.body.name;
 	var category = req.body.category;
 	var ing_list = req.body.ingredients;
@@ -185,7 +185,7 @@ app.post('/add-drink', function(req,res){
 		.then(function(result){
 			res.render('home');
 		})
-});
+});*/
 
 //app.listen(3000);
 //console.log('3000 is the magic port');
