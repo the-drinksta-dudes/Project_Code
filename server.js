@@ -33,7 +33,7 @@ app.get('/', function(req, res) {
 		res.render('example_home', {username : u_name});
 	}
 	else{
-		res.render('login', {username: ''});
+		res.render('login', {message: '', username: ''});
 	}
 });
 
