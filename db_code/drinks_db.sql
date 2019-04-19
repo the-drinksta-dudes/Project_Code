@@ -29,5 +29,12 @@ VALUES('Cosmopolitan', nextval('drinks_seq2'), 'vodka', ARRAY ['cointreau','cran
 ('Kir', nextval('drinks_seq2'), 'wine', ARRAY ['white wine', 'creme de cassis'], 'Sweet liqueur with flavor of black currants. Nice mix with white wine', 'https://imgur.com/a/yENBYVQ'),
 ('White Wine Spritzer', nextval('drinks_seq2'), 'wine', ARRAY ['white wine', 'sparkling water'], 'Simple to make, nice mix of texture and taste.', 'https://imgur.com/a/tjoGF6J'),
 ('UK Sour', nextval('drinks_seq2'), 'wine', ARRAY ['red wine', 'Scotch whiskey', 'apricot liqueur', 'lemon juice', 'cinnamon syrup'], 'An INCREDIBLE mixture that brings the touch of sour, to your sweet wine collections','https://imgur.com/a/r6G1r5e'),
-('Rose Berry Bliss', nextval('drinks_seq2'), 'wine', ARRAY ['rose wine', 'blueberries', 'pink lemonade', 'lemon-lime soda'], 'Generally made by the pitcher. Easy to mix. Brings the exotic to your exquisite collection', 'https://imgur.com/a/Pwfhflb')
+('Rose Berry Bliss', nextval('drinks_seq2'), 'wine', ARRAY ['rose wine', 'blueberries', 'pink lemonade', 'lemon-lime soda'], 'Generally made by the pitcher. Easy to mix. Brings the exotic to your exquisite collection', 'https://imgur.com/a/Pwfhflb'),
+('Irish Mule', nextval('drinks_seq2'), 'whiskey', ARRAY ['irish whiskey','ginger beer','lime juice','lime'], 'nice drink', 'https://imgur.com/a/MaZaleL'),
+('whiskey sour', nextval('drinks_seq2'), 'whiskey', ARRAY ['whiskey', 'lemon juice', 'simple syrup'], 'nice drink', 'https://imgur.com/a/OrVde7I'),
+('John Collins', nextval('drinks_seq2'), 'whiskey', ARRAY ['lemon juice', 'simple syrup','club soda'], 'nice drink', 'https://imgur.com/a/kX2mrlU'),
+('Jack and Coke', nextval('drinks_seq2'), 'whiskey', ARRAY ['Jack Daniels','coke'], 'nice drink', 'https://imgur.com/a/GEXvM1I'),
+('Old Fashioned', nextval('drinks_seq2'), 'whiskey', ARRAY ['sugar cube', 'bitters','orange peel', 'nice drink', 'https://imgur.com/a/7j0MVx5'),
+('pina colada', nextval('drinks_seq2'), 'rum', ARRAY ['pineapple', 'pineapple juice', 'coconut cream', 'white rum'],'nice drink','https://imgur.com/a/QdBtKF8'), 
+('strawberry daiquiri', nextval('drinks_seq2'), 'rum', ARRAY ['lime juice', 'strawberries','simple syrup'],'nice drink','https://imgur.com/a/HPwq5pG')                                                            
 ;
