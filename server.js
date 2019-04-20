@@ -1,8 +1,10 @@
 var express = require('express'); //Ensure our express framework has been added
 var app = express();
 var bodyParser = require('body-parser'); //Ensure our body-parser tool has been added
+var cookieParser = require('cookie-parser');
 app.use(bodyParser.json());              // support json encoded bodies
 app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
+app.use(cookieParser());
 
 //Create Database Connection
 
@@ -25,33 +27,67 @@ app.set('view engine', 'ejs');
 app.use(express.static(__dirname + '/'));
 
 app.get('/', function(req, res) {
-	res.render('login', {
-		message: ''
-	});
+	var u_name = '';
+	if(req.cookies.username){
+		u_name = req.cookies.username;
+		res.render('example_home', {username : u_name});
+	}
+	else{
+		res.render('login', {message: '', username: ''});
+	}
 });
 
 app.get('/login', function(req, res) {
+	var u_name = '';
+	if(req.cookies.username){
+		u_name = req.cookies.username;
+	}
 	res.render('login', {
-		message: ''
+		message: '',
+		username: u_name
 	});
 });
 
 app.get('/register', function(req, res) {
+	var u_name = '';
+	if(req.cookies.username){
+		u_name = req.cookies.username;
+	}
 	res.render('register', {
-		message: ''
+		message: '',
+		username: u_name
 	});
 });
 
 app.get('/home', function(req, res){
-	res.render('example_home');
+	var u_name = '';
+	if(req.cookies.username){
+		u_name = req.cookies.username;
+	}
+	res.render('example_home', {username : u_name});
+});
+
+app.get('/logout', function(req, res){
+	res.clearCookie("userID");
+	res.clearCookie("username");
+	res.clearCookie("name");
+	res.render('login', {message: '', username: ''})
 });
 
 app.get('/search', function(req, res){
-	res.render('search', {drink: ''});
+	var u_name = '';
+	if(req.cookies.username){
+		u_name = req.cookies.username;
+	}
+	res.render('search', {drink: '', username: u_name});
 });
 
 app.get('/add-drink', function(req, res){
-	res.render('add-drink');
+	var u_name = '';
+	if(req.cookies.username){
+		u_name = req.cookies.username;
+	}
+	res.render('add-drink', {username: u_name});
 });
 app.get('/User', function(req, res){
 	res.render('User');
@@ -65,21 +101,26 @@ app.get('/submit', function(req,res){
 	db.query(get_pwd)
 		.then(function(data){
 			var real_pwd = data[0].password;
-			//console.log(real_pwd);
 			if(real_pwd == pwd){
+				res.cookie("userID", data[0].user_id);
+				res.cookie("username", data[0].username);
+				res.cookie("name", data[0].name);
 				res.render('login', {
-					message: 'success'
+					message: 'success',
+					username: data[0].username
 				})
 			}
 			else{
 				res.render('login', {
-					message: 'warning'
+					message: 'warning',
+					username: ''
 				})
 			}
 		})
 		.catch(error => {
 			res.render('login', {
-				message: 'error'
+				message: 'error',
+				username: ''
 			});
 		})
 });
@@ -100,7 +141,8 @@ app.get('/search/get_drink', function(req, res)
 		console.log("Here3");
     	res.render('search',{
 				my_title: "Drink Search",
-				drink: data[0]
+				drink: data[0],
+				username: ''
 			})
     })
     .catch(error => {
@@ -109,13 +151,18 @@ app.get('/search/get_drink', function(req, res)
             request.flash('error', err);
             response.render('search', {
                 my_title: 'Drink Search',
-                drink: ''
+                drink: '',
+                username: ''
             })
     });
 
 });
 
 app.post('/register', function(req,res){
+	var u_name = '';
+	if(req.cookies.username){
+		u_name = req.cookies.username;
+	}
 	var name = req.body.name;
 	var username = req.body.username;
 	var emailAddress = req.body.emailAddress;
@@ -147,7 +194,8 @@ app.post('/register', function(req,res){
 			//console.log(info[1].length);
 			if(info[1].length>0){
 				res.render('register',{
-					message: 'warning'
+					message: 'warning',
+					username: u_name
 				})
 			}
 			else{
@@ -158,14 +206,16 @@ app.post('/register', function(req,res){
 						//console.log("success");
 					})
 				res.render('register',{
-					message: 'success'
+					message: 'success',
+					username: u_name
 				});
 			}
 		})
 	}
 	else{
 		res.render('register',{
-			message: 'error'
+			message: 'error',
+			username: u_name
 		});
 	}
 });
@@ -180,15 +230,25 @@ app.post('/add-drink', function(req,res){
 		return item.trim();
 	});
 	var array_txt = "ARRAY [";
-	for (i = 0; i < ingredients.length; i++){
-		array_txt += "'"+ingredients[i]"',";
+	if(ingredients.length >0){
+		array_txt += "'"+ingredients[0]+"'";
+		if (ingredients.length >1){
+			for (i = 1; i < ingredients.length; i++){
+				array_txt += ",'"+ingredients[i]+"'";
+			}
+		}
 	}
 	array_txt += "]";
-	var query =  "INSERT INTO users VALUES('" + name + "', nextval('drinks_seq2'),'" + category +"'," 
-						+ array_txt + ",'"+image_link+"');";
+	var query =  "INSERT INTO drinks VALUES('" + name + "', nextval('drinks_seq2'),'" + category +"'," 
+						+ array_txt +",'"+description+"','"+image_link+"');";
+	//console.log(query);
 	db.query(query)
 		.then(function(result){
-			res.render('home');
+			var u_name = '';
+			if(req.cookies.username){
+				u_name = req.cookies.username;
+			}
+			res.render('example_home', {username: u_name});
 		})
 });
 
