@@ -144,7 +144,7 @@ app.get('/search/get_drink', function(req, res)
 		console.log(error);
             request.flash('error', err);
             response.render('search', {
-                my_title: 'Drink Search',
+								my_title: 'Drink Search',
                 drink: '',
                 username: ''
             })
