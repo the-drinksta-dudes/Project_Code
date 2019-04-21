@@ -42,29 +42,34 @@
 							</div>
 						</div>
 						<div class="col-8">
+							<div class="card text-white bg-dark mb-3">
+								<div class="card-header"><%- drink_name %></div>
+								<div class="card-body">
+									<table class="table table-dark">
+										<tr>
+										<td>Ingredients:</td>
+										</tr>	
+										<% 
+											if(drink) { 
+												var rows = '';
+												drink.ingredients.forEach(function(item){
+														rows += '<tr><td>'+ item + '</td></tr>'
+													}); %>
+													<%- rows %> 
+											<% } %>
+									</table>
+								</div>
+								
+
+							</div>
 								<table class="table table-dark">
 									<tr>
-										<th>Name</th>
+										<th>Name:</th>
 										<td>
 											<%- drink_name %>
 										<span id="d_name"></span></td>
 									</tr>
-									<tr>
-										<td>Ingredients:</td>
-										<td>
-												<span id="ingredients"></span>
-												<table class="table table-dark">
-												<% 
-													if(drink) { 
-														var rows = '';
-														drink.ingredients.forEach(function(item){
-																rows += '<tr><td>'+ item + '</td></tr>'
-															}); %>
-															<%- rows %> 
-													<% } %>
-												</table>
-										</td>
-									</tr>
+									
 								</table>
 						</div>
 					</div>
