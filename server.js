@@ -152,6 +152,27 @@ app.get('/search/get_drink', function(req, res)
 
 });
 
+app.post('/search/favorite', function(req, res)
+{
+	var drink_id = drink.id;
+	var user_id = ''
+
+	if(req.cookies.user_id){
+		user_id = req.cookies.user_id;
+	}
+
+	var favorite_insert = "insert into fav_drinks values (" + drink_id + "," + user_id + ");";
+
+  db.query(favorite_insert)
+    .then(data => {
+    })
+    .catch(error => {
+		// display error message in case an error
+		console.log(error);
+            request.flash('error', err);
+    });
+});
+
 app.post('/register', function(req,res){
 	var u_name = '';
 	if(req.cookies.username){
