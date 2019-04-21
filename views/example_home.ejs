@@ -109,9 +109,17 @@
                         Go to drink Page
                       </tr>
                     </thead>
-                    
+                    <tbody>
+                    <% 
+                      if(drink) { 
+                        var rows = '';
+                        drink.forEach(function(item){
+                            rows += '<tr><td>'+ item.name + '</td></tr> <tr><td>'
+                          }); %>
+                          <%- rows %> 
+                      <% } %>
+                    </tbody>
                   </table>
-                  <p class="card-text"></p>
                 </div>
               </div>
             </div>
