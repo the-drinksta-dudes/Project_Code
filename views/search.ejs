@@ -36,6 +36,7 @@
 								if(drink){ 
 									image_src = drink.img_src;
 									drink_name = drink.name;
+									description = drink.description;
 								} 
 								%>
 								<img class="card-img-top rounded" id="drink_img" src="<%-image_src %>" alt="A picture of <%-drink_name %>">
@@ -62,6 +63,7 @@
 											<% } %>
 										</tbody>
 									</table>
+									<p class="card-text"><%-description%></p>
 								</div>
 							</div>
 						</div>
