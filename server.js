@@ -133,11 +133,15 @@ app.get('/search/get_drink', function(req, res)
 
   db.any(drink_search)
     .then(data => {
+			var u_name = '';
+			if(req.cookies.username){
+				u_name = req.cookies.username;
+			}
 			res.cookie("drinkID", data[0].ID);
     	res.render('search', {
 				my_title: "Drink Search",
 				drink: data[0],
-				username: ''
+				username: u_name
 			})
     })
     .catch(error => {
