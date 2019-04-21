@@ -270,7 +270,7 @@ app.get('/home/get_drink', function(req, res)
 
   db.any(drink_search)
     .then(data => {
-    	res.render('home', {
+    	res.render('example_home', {
 				my_title: "Drink Search",
 				drink: data[0],
 				username: ''
@@ -280,7 +280,7 @@ app.get('/home/get_drink', function(req, res)
 		// display error message in case an error
 		console.log(error);
             request.flash('error', err);
-            response.render('home', {
+            response.render('example_home', {
 								my_title: 'Drink Search',
                 drink: '',
                 username: ''
