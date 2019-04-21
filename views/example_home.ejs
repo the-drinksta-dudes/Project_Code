@@ -21,32 +21,51 @@
   <div class="jumbotron no no-padding" style="background:#424949;">
     <h1 class="text-center" >DRINKSTA</h1>  
     <p><br></p>
-    <fieldset class="form-group-inline">
-    <legend>Search Options</legend>
-    <div class="form-check">
-      <label class="form-check-label">
-        <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios1" value="option1" checked>
-        Drinks
-      </label>
+    <div class="row">
+      <fieldset class="form-group">
+        <legend>Search Options</legend>
+        <div class="form-check-inline">
+          <label class="form-check-label">
+            <input type="radio" class="form-check-input" name="optionsRadios" onclick="viewSearch('Drink_Div', 1);viewSearch('Ingredient_Div', 0);viewSearch('User_Div', 0);"id="optionsRadios1" value="option1" checked>
+            Drinks
+          </label>
+        </div>
+        <div class="form-check-inline">
+        <label class="form-check-label">
+            <input type="radio" class="form-check-input" name="optionsRadios" onclick="viewSearch('Drink_Div', 0);viewSearch('Ingredient_Div', 1);viewSearch('User_Div', 0);" id="optionsRadios2" value="option2">
+            Ingredients
+          </label>
+        </div>
+        <div class="form-check-inline disabled">
+        <label class="form-check-label">
+            <input type="radio" class="form-check-input" name="optionsRadios" onclick="viewSearch('Drink_Div', 0);viewSearch('Ingredient_Div', 0);viewSearch('User_Div', 1);" id="optionsRadios3" value="option3" >
+            Users
+          </label>
+        </div>
+        </fieldset>
     </div>
-    <div class="form-check">
-    <label class="form-check-label">
-        <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios2" value="option2">
-        Ingredients
-      </label>
-    </div>
-    <div class="form-check disabled">
-    <label class="form-check-label">
-        <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios3" value="option3" disabled>
-        Users
-      </label>
-    </div>
-  </fieldset>
 </div>
-     <div class="row" >
+     <div class="row"  id="Drink_Div">
      <div class="form-group offset-sm-3 col-sm-4">
     
-    <input type="text" class="form-control form-control-lg" id="inputPassword2" placeholder="Lets Drink!">
+    <input type="text" class="form-control form-control-lg" id="Drink_Form" placeholder="Lets Drink!">
+       </div>
+
+  <button type="submit" class="h-100 btn-lg btn-secondary col-sm-2">Drink!</button>
+    </div>
+
+    <div class="row" id="Ingredient_Div">
+     <div class="form-group offset-sm-3 col-sm-4">
+    
+    <input type="text" class="form-control form-control-lg" id="Ingredient_Form" placeholder="Find an Ingredient">
+       </div>
+
+  <button type="submit" class="h-100 btn-lg btn-secondary col-sm-2">Drink!</button>
+    </div>
+    <div class="row"  id="User_Div">
+     <div class="form-group offset-sm-3 col-sm-4">
+    
+    <input type="text" class="form-control form-control-lg" id="Person_Form" placeholder="Searh for a person.">
        </div>
 
   <button type="submit" class="h-100 btn-lg btn-secondary col-sm-2">Drink!</button>
