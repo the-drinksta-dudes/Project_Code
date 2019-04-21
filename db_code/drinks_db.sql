@@ -35,6 +35,6 @@ VALUES('Cosmopolitan', nextval('drinks_seq2'), 'vodka', ARRAY ['cointreau','cran
 ('John Collins', nextval('drinks_seq2'), 'whiskey', ARRAY ['lemon juice', 'simple syrup','club soda'], 'nice drink', 'https://i.imgur.com/Ok6Oy8w.jpg'),
 ('Jack and Coke', nextval('drinks_seq2'), 'whiskey', ARRAY ['Jack Daniels','coke'], 'nice drink', 'https://i.imgur.com/p6rOVGF.jpg'),
 ('Old Fashioned', nextval('drinks_seq2'), 'whiskey', ARRAY ['sugar cube', 'bitters','orange peel', 'nice drink'], 'nice drink', 'https://i.imgur.com/aijMiFA.jpg'),
-('pina colada', nextval('drinks_seq2'), 'rum', ARRAY ['pineapple', 'pineapple juice', 'coconut cream', 'white rum'],'nice drink','https://i.imgur.com/Q6vkZ6F.jpg'), 
+('pina colada', nextval('drinks_seq2'), 'rum', ARRAY ['pineapple ', 'pineapple juice', 'coconut cream', 'white rum'],'nice drink','https://i.imgur.com/Q6vkZ6F.jpg'), 
 ('strawberry daiquiri', nextval('drinks_seq2'), 'rum', ARRAY ['lime juice', 'strawberries','simple syrup'],'nice drink','https://i.imgur.com/ZpRTunv.jpg')                                                            
 ;
