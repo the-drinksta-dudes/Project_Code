@@ -53,6 +53,12 @@
 </div>
 <!-- FORM FOR SEARCHING DRINKS-->
 <form action="/search/get_drink" method="get">
+     <div class="row"  id="Drink_Div">
+     <div class="form-group offset-sm-3 col-sm-4">
+    
+    <input type="text" class="form-control form-control-lg" id="Drink_Form" placeholder="Lets Drink!" name="drinkname">
+       </div>
+  <input type="submit" value="Drink!" class="h-100 btn-lg btn-secondary col-sm-2" id="drinkSearchButton"  onclick="viewSearch('Ingreient_Card', 0)">
   <div class="row"  id="Drink_Div">
     <div class="form-group offset-sm-3 col-sm-4">
       <input type="text" class="form-control form-control-lg" id="Drink_Form" placeholder="Lets Drink!" name="drinkname">
@@ -66,7 +72,7 @@
         <input type="text" class="form-control form-control-lg" id="Ingredient_Form" placeholder="Find an Ingredient">
     </div>
 
-  <input type="submit" value="Drink!" class="h-100 btn-lg btn-secondary col-sm-2" id="drinkSearchButton" onclick="viewSearch('Drink_Card', 0)">
+  <input type="submit" value="Drink!" class="h-100 btn-lg btn-secondary col-sm-2" id="drinkSearchButton" onclick="viewSearch('Ingredient_Card', 1)">
     </div>
 
     <div class="row"  id="User_Div">
@@ -74,13 +80,13 @@
         <input type="text" class="form-control form-control-lg" id="User_Form" placeholder="Search for a person.">
       </div>
 
-  <input type="submit" value="Drink!" class="h-100 btn-lg btn-secondary col-sm-2" id="drinkSearchButton" onclick="viewSearch('Drink_Card', 0)">
+  <input type="submit" value="Drink!" class="h-100 btn-lg btn-secondary col-sm-2" id="drinkSearchButton" onclick="viewSearch('Ingredient_Card', 0)">
     </div>
     <!-- 
-       BELOW CARD IF SEARCHING FOR DRINKS
+       BELOW CARD IF SEARCHING FOR Ingredients
     -->
 
-    <div class="card text-white bg-dark mb-3" id="Drink_Card">
+    <div class="card text-white bg-dark mb-3" id="Ingredient_Card">
       <div class="card-body">
           <div class="row">
             <div class="col-4">
