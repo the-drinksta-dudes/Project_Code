@@ -14,7 +14,7 @@ const dbConfig = process.env.DATABASE_URL;
 // const dbConfig = {
 // 	host: 'localhost',
 // 	port: 5432,
-// 	database: 'drinksta',
+// 	database: 'drinks_db',
 // 	user: 'postgres',
 // 	password: 'pwd'
 // };
@@ -133,10 +133,15 @@ app.get('/search/get_drink', function(req, res)
 
   db.any(drink_search)
     .then(data => {
+			var u_name = '';
+			if(req.cookies.username){
+				u_name = req.cookies.username;
+			}
+			res.cookie("drinkID", data[0].ID);
     	res.render('search', {
 				my_title: "Drink Search",
 				drink: data[0],
-				username: ''
+				username: u_name
 			})
     })
     .catch(error => {
@@ -154,8 +159,10 @@ app.get('/search/get_drink', function(req, res)
 
 app.post('/search/favorite', function(req, res)
 {
-	var drink_id = drink.ID;
 	var user_id = '';
+	var drink_id = req.body.favname;
+
+	console.log(drink_id)
 
 	if(req.cookies.user_id){
 		user_id = req.cookies.user_id;
@@ -163,8 +170,11 @@ app.post('/search/favorite', function(req, res)
 
 	var favorite_insert = "insert into fav_drinks values (" + drink_id + "," + user_id + ");";
 
+	console.log(favorite_insert)
+
   db.query(favorite_insert)
     .then(data => {
+			
     })
     .catch(error => {
 		// display error message in case an error
@@ -310,6 +320,6 @@ app.get('/home/get_ingredient', function(req, res)
 
 });
 
-// app.listen(3000);
-// console.log('3000 is the magic port');
+//app.listen(3000);
+//console.log('3000 is the magic port');
 app.listen(process.env.PORT);
