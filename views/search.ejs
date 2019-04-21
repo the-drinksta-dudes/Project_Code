@@ -32,11 +32,13 @@
 							<div class="card text-white bg-dark mb-3">
 								<% 
 								var image_src = '';
-								var drink_name = ''
+								var drink_name = '';
+								var drink_ID = '';
 								if(drink){ 
 									image_src = drink.img_src;
 									drink_name = drink.name;
 									description = drink.description;
+									drink_ID = drink.id;
 								} 
 								%>
 								<img class="card-img-top rounded" id="drink_img" src="<%-image_src %>" alt="A picture of <%-drink_name %>">
@@ -71,6 +73,7 @@
 								<div class="card-body">
 									<p>
 										<form action="/search/favorite" method="post">
+											<input type="hidden" id="favname" name="favname" class="form-control" value= <%-drink_ID%>>
 											<input type="submit" value="Add to Favorites?" class="btn-lg btn-secondary col-sm-2" id="drinkSearchButton">
 										</form>
 									</p>
