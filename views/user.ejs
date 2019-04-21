@@ -20,6 +20,9 @@
 		<div class="container"><h2 style="color:white">Favorite Drinks</h2></div>
 		<br>
 		<%if(drinks){
+			String.prototype.capitalize = function() {
+			    return this.charAt(0).toUpperCase() + this.slice(1);
+			}
 			drinks.forEach(function(drink){%>
 		<div class="card text-white bg-dark mb-3">
 			<div class="card-body">
@@ -31,7 +34,7 @@
 								var drink_name = ''
 								if(drink){ 
 									image_src = drink.img_src;
-									drink_name = drink.name;
+									drink_name = drink.name.capitalize();
 									description = drink.description;
 								} 
 								%>
@@ -53,7 +56,7 @@
 											if(drink) { 
 												var rows = '';
 												drink.ingredients.forEach(function(item){
-														rows += '<tr><td>'+ item + '</td></tr>'
+														rows += '<tr><td>'+ item.capitalize() + '</td></tr>'
 													}); %>
 													<%- rows %> 
 											<% } %>
