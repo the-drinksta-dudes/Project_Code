@@ -271,6 +271,7 @@ app.get('/home/get_drink', function(req, res)
   db.any(drink_search)
     .then(data => {
     	res.render('search', {
+    			req.params: {data[0].name}
 				my_title: "Drink Search",
 				drink: data[0],
 				username: ''
