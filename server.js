@@ -127,19 +127,13 @@ app.get('/submit', function(req,res){
 
 app.get('/search/get_drink', function(req, res)
 {
-	console.log("Here1");
 	var drink_name = req.query.drinkname;
-	var drink_search = 'select * from drinks where name = "'+ drink_name +'";';
+	var drink_search = "select * from drinks where name = '"+ drink_name + "';";
 	console.log(drink_search);
 
-  db.task('get-everything', task => {
-        return task.batch([
-            task.any(drink_search)
-        ]);
-    })
+  db.any(drink_search)
     .then(data => {
-		console.log("Here3");
-    	res.render('search',{
+    	res.render('search', {
 				my_title: "Drink Search",
 				drink: data[0],
 				username: ''
