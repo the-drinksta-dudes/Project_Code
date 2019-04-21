@@ -284,15 +284,15 @@ app.get('/account', function(req,res){
 		res.render('example_home', {username : ''})
 	}
 });
-app.get('/home/get_drink', function(req, res)
+app.get('/home/get_ingredient', function(req, res)
 {
-	var drink_name = req.query.drinkname;
-	var drink_search = "select * from drinks where name = '"+ drink_name + "';";
+	var ingredient_name = req.query.ingredientname;
+	var ingredient_search = "select name from drinks where '"+ ingredient_name+"' = ANY( ingredients);";
 	console.log(drink_search);
 
   db.any(drink_search)
     .then(data => {
-    	res.render('search', {
+    	res.render('example_home', {
 				my_title: "Drink Search",
 				drink: data[0],
 				username: ''
