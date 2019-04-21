@@ -11,13 +11,13 @@ app.use(cookieParser());
 var pgp = require('pg-promise')();
 const dbConfig = process.env.DATABASE_URL;
 
-/*const dbConfig = {
-	host: 'localhost',
-	port: 5432,
-	database: 'drinks_db',
-	user: 'postgres',
-	password: 'pwd'
-};*/
+// const dbConfig = {
+// 	host: 'localhost',
+// 	port: 5432,
+// 	database: 'drinksta',
+// 	user: 'postgres',
+// 	password: 'pwd'
+// };
 
 var db = pgp(dbConfig);
 
@@ -133,7 +133,6 @@ app.get('/search/get_drink', function(req, res)
 
   db.any(drink_search)
     .then(data => {
-			res.cookie("drinkID", data[0].ID);
     	res.render('search', {
 				my_title: "Drink Search",
 				drink: data[0],
@@ -155,7 +154,7 @@ app.get('/search/get_drink', function(req, res)
 
 app.post('/search/favorite', function(req, res)
 {
-	var drink_id = req.cookies.drinkID;
+	var drink_id = drink.ID;
 	var user_id = '';
 
 	if(req.cookies.user_id){
@@ -294,7 +293,7 @@ app.get('/home/get_ingredient', function(req, res)
     .then(data => {
     	res.render('example_home', {
 				my_title: "Drink Search",
-				drink: data[0],
+				drink: data,
 				username: ''
 			})
     })
@@ -311,6 +310,6 @@ app.get('/home/get_ingredient', function(req, res)
 
 });
 
- //app.listen(3000);
- //console.log('3000 is the magic port');
+// app.listen(3000);
+// console.log('3000 is the magic port');
 app.listen(process.env.PORT);
