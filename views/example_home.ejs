@@ -12,8 +12,7 @@
       
     <link href="../resources/css/home_page.css" rel="stylesheet">
   </head>
-
-  <body onload="viewSearch('Drink_Div', 1);viewSearch('Ingredient_Div', 0);viewSearch('User_Div', 0);">
+  <body onload="viewSearch('Drink_Div', 1);viewSearch('Ingredient_Div', 0);viewSearch('User_Div', 0);viewSearch('Drink_Card', 0);">
     
     <div class="text-center no-padding" style="padding-top: 10px" >
       <img src="../resources/img/homepage_1.jpg" class="img-fluid rounded" align="center" alt="Cinque Terre">
@@ -51,21 +50,24 @@
         </fieldset>
       </div>
     </div>
-
-    <div class="row"  id="Drink_Div">
-      <div class="form-group offset-sm-3 col-sm-4">
-        <input type="text" class="form-control form-control-lg" id="Drink_Form" placeholder="Lets Drink!">
-      </div>
-
-      <button type="submit" class="h-100 btn-lg btn-secondary col-sm-2">Drink!</button>
+</div>
+<!-- FORM FOR SEARCHING DRINKS-->
+<form action="/home/get_drink" method="get">
+     <div class="row"  id="Drink_Div">
+     <div class="form-group offset-sm-3 col-sm-4">
+    
+    <input type="text" class="form-control form-control-lg" id="Drink_Form" placeholder="Lets Drink!" name="">
+       </div>
+<form action="/home/get_drink" method="get">
+  <input type="submit" value="Drink!" class="h-100 btn-lg btn-secondary col-sm-2" id="drinkSearchButton"  onclick="viewSearch('Drink_Card', 1)">
     </div>
-
+</form> 
     <div class="row" id="Ingredient_Div">
       <div class="form-group offset-sm-3 col-sm-4">
         <input type="text" class="form-control form-control-lg" id="Ingredient_Form" placeholder="Find an Ingredient">
       </div>
 
-      <button type="submit" class="h-100 btn-lg btn-secondary col-sm-2">Drink!</button>
+  <input type="submit" value="Drink!" class="h-100 btn-lg btn-secondary col-sm-2" id="drinkSearchButton" onclick="viewSearch('Drink_Card', 0)">
     </div>
 
     <div class="row"  id="User_Div">
@@ -73,9 +75,44 @@
         <input type="text" class="form-control form-control-lg" id="User_Form" placeholder="Search for a person.">
       </div>
 
-      <button type="submit" class="h-100 btn-lg btn-secondary col-sm-2">Drink!</button>
+  <input type="submit" value="Drink!" class="h-100 btn-lg btn-secondary col-sm-2" id="drinkSearchButton" onclick="viewSearch('Drink_Card', 0)">
     </div>
+    <!-- 
+       BELOW CARD IF SEARCHING FOR DRINKS
+    -->
 
+    <div class="card text-white bg-dark mb-3" id="Drink_Card">
+      <div class="card-body">
+          <div class="row">
+            <div class="col-4">
+              <div class="card text-white bg-dark mb-3">
+               
+              
+                <img class="card-img-top rounded" id="drink_img" src="" alt="A picture of drink">
+              </div>
+            </div>
+            <div class="col-8">
+              <div class="card text-white bg-dark mb-3">
+                <div class="card-header"></div>
+                <div class="card-body">
+                  <table class="table table-dark">
+                    <thead>
+                      <tr>
+                        <th scope="col">Ingredients:</th>
+                      </tr>
+                    </thead>
+                    
+                  </table>
+                  <p class="card-text"></p>
+                </div>
+              </div>
+            </div>
+          </div>
+      </div>
+    </div>
+    <!-- 
+        ABOVE CARD IF SEARCHING FOR DRINKS
+    -->
     <h3 align="center">Instead of drunk texting your ex, DRINKSTA.</h3>
     <h3 align="center">Find, Create, Mix, Drink<br><br></h3> 
 

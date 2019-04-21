@@ -11,13 +11,13 @@ app.use(cookieParser());
 var pgp = require('pg-promise')();
 const dbConfig = process.env.DATABASE_URL;
 
-/*const dbConfig = {
-	host: 'localhost',
-	port: 5432,
-	database: 'drinks_db',
-	user: 'postgres',
-	password: 'pwd'
-};*/
+// const dbConfig = {
+// 	host: 'localhost',
+// 	port: 5432,
+// 	database: 'drinksta',
+// 	user: 'postgres',
+// 	password: 'pwd'
+// };
 
 var db = pgp(dbConfig);
 
@@ -215,9 +215,9 @@ app.post('/register', function(req,res){
 });
 
 app.post('/add-drink', function(req,res){
-	var name = req.body.name;
+	var name = req.body.name.toLowerCase();
 	var category = req.body.category;
-	var ing_list = req.body.ingredients;
+	var ing_list = req.body.ingredients.toLowerCase();
 	var description = req.body.description;
 	var image_link = req.body.imglink;
 	var ingredients = ing_list.split(",").map(function(item){
@@ -246,6 +246,49 @@ app.post('/add-drink', function(req,res){
 		})
 });
 
-//app.listen(3000);
-//console.log('3000 is the magic port');
+app.get('/account', function(req,res){
+	if(req.cookies.userID){
+		var id = req.cookies.userID;
+		var username = req.cookies.username;
+		var name = req.cookies.name;
+		var query = "select distinct * from drinks inner join fav_drinks on fav_drinks.drink_id = drinks.id where fav_drinks.user_id = '"+id+"';";
+		db.query(query)
+			.then(function(data){
+				// console.log(data);
+				res.render('user',{user: name, username: username, drinks: data});
+			});
+	}
+	else{
+		res.render('example_home', {username : ''})
+	}
+});
+app.get('/home/get_drink', function(req, res)
+{
+	var drink_name = req.query.drinkname;
+	var drink_search = "select * from drinks where name = '"+ drink_name + "';";
+	console.log(drink_search);
+
+  db.any(drink_search)
+    .then(data => {
+    	res.render('search', {
+				my_title: "Drink Search",
+				drink: data[0],
+				username: ''
+			})
+    })
+    .catch(error => {
+		// display error message in case an error
+		console.log(error);
+            request.flash('error', err);
+            response.render('example_home', {
+								my_title: 'Drink Search',
+                drink: '',
+                username: ''
+            })
+    });
+
+});
+
+// app.listen(3000);
+// console.log('3000 is the magic port');
 app.listen(process.env.PORT);
