@@ -109,7 +109,7 @@
                       if(drink) { 
                         var rows = '';
                         drink.forEach(function(item){
-                            rows += '<tr><td>'+ item.name + '</td> <input type="text" class="form-control form-control-lg" id="Ingredient_Form" placeholder="Find an Ingredient" name="drinkButton"></tr>'
+                            rows += '<tr><td>'+ item.name + '</td> <input type="submit" value="Drink!" class="h-100 btn-lg btn-secondary col-sm-2" id="drinkSearchButton"</tr>'
                           }); %>
                           <%- rows %> 
                       <% } %>
