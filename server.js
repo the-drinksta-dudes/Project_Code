@@ -293,7 +293,7 @@ app.get('/home/get_ingredient', function(req, res)
 {
 	var ingredient_name = req.query.ingredientname;
 	var ingredient_search = "select name from drinks where '"+ ingredient_name+"' = ANY(ingredients);";
-	console.log(ingredient_search);
+	console.log(ingredient_name);
 
   db.any(ingredient_search)
     .then(data => {

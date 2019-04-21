@@ -83,18 +83,14 @@
        BELOW CARD IF SEARCHING FOR Ingredients
     -->
     <%
-      if (test)
+      if (drink)
       {
     %>
     <div class="card text-white bg-dark mb-3" id="Ingredient_Card">
       <div class="card-body">
           <div class="row">
             <div class="col-4">
-              <div class="card text-white bg-dark mb-3">
-               
               
-                <img class="card-img-top rounded" id="drink_img" src="" alt="A picture of drink">
-              </div>
             </div>
             <div class="col-8">
               <div class="card text-white bg-dark mb-3">
@@ -104,11 +100,21 @@
                     <thead>
                       <tr>
                         <th scope="col">Ingredients:</th>
+                        <th scope="col">Go to Drink Page</th>
                       </tr>
+                      
                     </thead>
-                    
+                    <tbody>
+                    <% 
+                      if(drink) { 
+                        var rows = '';
+                        drink.forEach(function(item){
+                            rows += '<tr><td>'+ item.name + '</td> <input type="submit" value="Drink!" class="h-100 btn-lg btn-secondary col-sm-2" id="drinkSearchButton"</tr>'
+                          }); %>
+                          <%- rows %> 
+                      <% } %>
+                    </tbody>
                   </table>
-                  <p class="card-text"></p>
                 </div>
               </div>
             </div>
