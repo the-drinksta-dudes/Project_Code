@@ -286,8 +286,8 @@ app.get('/account', function(req,res){
 app.get('/home/get_ingredient', function(req, res)
 {
 	var ingredient_name = req.query.ingredientname;
-	var ingredient_search = "select name from drinks where '"+ ingredient_name+"' = ANY( ingredients);";
-	console.log(drink_search);
+	var ingredient_search = "select name from drinks where '"+ ingredient_name+"' = ANY(ingredients);";
+	console.log(ingredient_search);
 
   db.any(ingredient_search)
     .then(data => {
