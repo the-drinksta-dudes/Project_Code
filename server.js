@@ -59,7 +59,7 @@ app.get('/register', function(req, res) {
 	});
 });
 
-app.get('/example_home', function(req, res){
+app.get('/home', function(req, res){
 	var u_name = '';
 	if(req.cookies.username){
 		u_name = req.cookies.username;
@@ -262,7 +262,7 @@ app.get('/account', function(req,res){
 		res.render('example_home', {username : ''})
 	}
 });
-app.get('/example_home/get_drink', function(req, res)
+app.get('/home/get_drink', function(req, res)
 {
 	var drink_name = req.query.drinkname;
 	var drink_search = "select * from drinks where name = '"+ drink_name + "';";
@@ -270,7 +270,7 @@ app.get('/example_home/get_drink', function(req, res)
 
   db.any(drink_search)
     .then(data => {
-    	res.render('example_home', {
+    	res.render('home', {
 				my_title: "Drink Search",
 				drink: data[0],
 				username: ''
@@ -280,7 +280,7 @@ app.get('/example_home/get_drink', function(req, res)
 		// display error message in case an error
 		console.log(error);
             request.flash('error', err);
-            response.render('example_home', {
+            response.render('home', {
 								my_title: 'Drink Search',
                 drink: '',
                 username: ''
