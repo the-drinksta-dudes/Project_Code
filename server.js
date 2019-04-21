@@ -154,8 +154,8 @@ app.get('/search/get_drink', function(req, res)
 
 app.post('/search/favorite', function(req, res)
 {
-	var drink_id = drink.id;
-	var user_id = ''
+	var drink_id = drink.ID;
+	var user_id = '';
 
 	if(req.cookies.user_id){
 		user_id = req.cookies.user_id;
