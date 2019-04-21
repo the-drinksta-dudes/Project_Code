@@ -46,9 +46,12 @@
 								<div class="card-header"><%- drink_name %></div>
 								<div class="card-body">
 									<table class="table table-dark">
-										<tr>
-										<td>Ingredients:</td>
-										</tr>	
+										<thead>
+											<tr>
+												<th scope="col">Ingredients:</th>
+											</tr>
+										</thead>
+										<tbody>
 										<% 
 											if(drink) { 
 												var rows = '';
@@ -57,20 +60,10 @@
 													}); %>
 													<%- rows %> 
 											<% } %>
+										</tbody>
 									</table>
 								</div>
-								
-
 							</div>
-								<table class="table table-dark">
-									<tr>
-										<th>Name:</th>
-										<td>
-											<%- drink_name %>
-										<span id="d_name"></span></td>
-									</tr>
-									
-								</table>
 						</div>
 					</div>
 			</div>
