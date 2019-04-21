@@ -15,15 +15,14 @@
   <body>
 	<div class="container">
 		<p>
-			<form class="form-signin" action="/search/get_drink" method="get">
+			<form action="/search/get_drink" method="get">
 				<h1 class="h3 mb-3 font-weight-normal">Drink Lookup</h1>
 				<input type="text" id="drinkSearch" name="drinkname" class="form-control" autofocus>
-				<input type="submit" value="Search" class="btn btn-outline-dark btn-block" id="drinkSearchButton" data-toggle="collapse" data-target="#multiCollapseExample1" aria-expanded="false" aria-controls="multiCollapseExample1">
+				<input type="submit" value="Search" class="btn btn-outline-dark btn-block" id="drinkSearchButton">
 			</form>
 		</p>
 
-		<div class="collapse multi-collapse" id="multiCollapseExample1">
-				<div class="card card-body">
+		<div class="card card-body">
 						<div class="row">
 							<div class="col-4">
 								<div class="card">
@@ -31,12 +30,11 @@
 									var image_src = '../resources/img/rumcoke.jpg';
 									var drink_name = ''
 									if(drink){ 
-										console.log("Test")
 										image_src = drink.img_src;
 										drink_name = drink.name;
 									} 
 									%>
-									<img class="card-img-top rounded" id="drink_img" src="<%- image_src %>" alt="Rum and Coke">
+									<img class="card-img-top rounded" id="drink_img" src="<%-image_src %>" alt="A picture of <%-drink_name %>">
 								</div>
 							</div>
 							<div class="col-8">
@@ -53,15 +51,14 @@
 											<td>
 													<span id="ingredients"></span>
 													<table class="table">
-														<tr>
-															<td>2 ounces rum</td>
-														</tr>
-														<tr>
-																<td>4 to 6 ounces Coca-Cola</td>
-														</tr>
-														<tr>
-																<td>Garnish: lime wedge</td>
-														</tr>
+													<% 
+														if(drink) { 
+															var rows = '';
+															drink.ingredients.forEach(function(item){
+																	rows += '<tr><td>'+ item + '</td></tr>'
+																}); %>
+																<%- rows %> 
+														<% } %>
 													</table>
 											</td>
 										</tr>
@@ -71,7 +68,6 @@
 						</div>
 					</div>
 			</div>
-		</div>
   
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
