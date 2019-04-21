@@ -59,7 +59,7 @@ app.get('/register', function(req, res) {
 	});
 });
 
-app.get('/home', function(req, res){
+app.get('/example_home', function(req, res){
 	var u_name = '';
 	if(req.cookies.username){
 		u_name = req.cookies.username;
@@ -261,6 +261,32 @@ app.get('/account', function(req,res){
 	else{
 		res.render('example_home', {username : ''})
 	}
+});
+app.get('/example_home/get_drink', function(req, res)
+{
+	var drink_name = req.query.drinkname;
+	var drink_search = "select * from drinks where name = '"+ drink_name + "';";
+	console.log(drink_search);
+
+  db.any(drink_search)
+    .then(data => {
+    	res.render('example_home', {
+				my_title: "Drink Search",
+				drink: data[0],
+				username: ''
+			})
+    })
+    .catch(error => {
+		// display error message in case an error
+		console.log(error);
+            request.flash('error', err);
+            response.render('example_home', {
+								my_title: 'Drink Search',
+                drink: '',
+                username: ''
+            })
+    });
+
 });
 
 // app.listen(3000);
