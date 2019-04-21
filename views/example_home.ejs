@@ -2,80 +2,87 @@
 <% include ./partials/menu %>
 <html lang="en">
   <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    <!-- Custom styles for this template -->
-    
-  <link href="../resources/css/home_page.css" rel="stylesheet">
-
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+      <!-- Custom styles for this template -->
+      
+    <link href="../resources/css/home_page.css" rel="stylesheet">
   </head>
+
   <body onload="viewSearch('Drink_Div', 1);viewSearch('Ingredient_Div', 0);viewSearch('User_Div', 0);">
     
     <div class="text-center no-padding" style="padding-top: 10px" >
-    <img src="../resources/img/homepage_1.jpg" class="img-fluid rounded"align="center" alt="Cinque Terre">
-  </div>
-  <div class="jumbotron no no-padding" style="background:#424949;">
-    <h1 class="text-center" >DRINKSTA</h1>  
-    <p><br></p>
-    <div class="row offset-sm-3">
-      <fieldset class="form-group">
-        <legend>Search Options</legend>
-        <div class="form-check-inline">
-          <label class="form-check-label">
-            <input type="radio" class="form-check-input" name="optionsRadios" onclick="viewSearch('Drink_Div', 1);viewSearch('Ingredient_Div', 0);viewSearch('User_Div', 0);"id="optionsRadios1" value="option1" checked>
-            Drinks
-          </label>
-        </div>
-        <div class="form-check-inline">
-        <label class="form-check-label">
-            <input type="radio" class="form-check-input" name="optionsRadios" onclick="viewSearch('Drink_Div', 0);viewSearch('Ingredient_Div', 1);viewSearch('User_Div', 0);" id="optionsRadios2" value="option2">
-            Ingredients
-          </label>
-        </div>
-        <div class="form-check-inline">
-        <label class="form-check-label">
-            <input type="radio" class="form-check-input" name="optionsRadios" onclick="viewSearch('Drink_Div', 0);viewSearch('Ingredient_Div', 0);viewSearch('User_Div', 1);" id="optionsRadios3" value="option3" >
-            Users
-          </label>
-        </div>
-        </fieldset>
+      <img src="../resources/img/homepage_1.jpg" class="img-fluid rounded" align="center" alt="Cinque Terre">
     </div>
-</div>
-     <div class="row"  id="Drink_Div">
-     <div class="form-group offset-sm-3 col-sm-4">
-    
-    <input type="text" class="form-control form-control-lg" id="Drink_Form" placeholder="Lets Drink!">
-       </div>
 
-  <button type="submit" class="h-100 btn-lg btn-secondary col-sm-2">Drink!</button>
+    <div class="jumbotron no no-padding" style="background:#424949;">
+      <h1 class="text-center" >DRINKSTA</h1>  
+      <p><br></p>
+      <div class="row offset-sm-3">
+        <fieldset class="form-group">
+        
+          <legend>Search Options</legend>
+
+          <div class="form-check-inline">
+            <label class="form-check-label">
+              <input type="radio" class="form-check-input" name="optionsRadios" onclick="viewSearch('Drink_Div', 1);viewSearch('Ingredient_Div', 0);viewSearch('User_Div', 0);"id="optionsRadios1" value="option1" checked>
+                Drinks
+            </label>
+          </div>
+
+          <div class="form-check-inline">
+            <label class="form-check-label">
+              <input type="radio" class="form-check-input" name="optionsRadios" onclick="viewSearch('Drink_Div', 0);viewSearch('Ingredient_Div', 1);viewSearch('User_Div', 0);" id="optionsRadios2" value="option2">
+              Ingredients
+            </label>
+          </div>
+
+          <div class="form-check-inline">
+            <label class="form-check-label">
+              <input type="radio" class="form-check-input" name="optionsRadios" onclick="viewSearch('Drink_Div', 0);viewSearch('Ingredient_Div', 0);viewSearch('User_Div', 1);" id="optionsRadios3" value="option3" >
+              Users
+            </label>
+          </div>
+
+        </fieldset>
+      </div>
+    </div>
+
+    <div class="row"  id="Drink_Div">
+      <div class="form-group offset-sm-3 col-sm-4">
+        <input type="text" class="form-control form-control-lg" id="Drink_Form" placeholder="Lets Drink!">
+      </div>
+
+      <button type="submit" class="h-100 btn-lg btn-secondary col-sm-2">Drink!</button>
     </div>
 
     <div class="row" id="Ingredient_Div">
-     <div class="form-group offset-sm-3 col-sm-4">
-    
-    <input type="text" class="form-control form-control-lg" id="Ingredient_Form" placeholder="Find an Ingredient">
-       </div>
+      <div class="form-group offset-sm-3 col-sm-4">
+        <input type="text" class="form-control form-control-lg" id="Ingredient_Form" placeholder="Find an Ingredient">
+      </div>
 
-  <button type="submit" class="h-100 btn-lg btn-secondary col-sm-2">Drink!</button>
+      <button type="submit" class="h-100 btn-lg btn-secondary col-sm-2">Drink!</button>
     </div>
+
     <div class="row"  id="User_Div">
-     <div class="form-group offset-sm-3 col-sm-4">
-    
-    <input type="text" class="form-control form-control-lg" id="User_Form" placeholder="Search for a person.">
-       </div>
+      <div class="form-group offset-sm-3 col-sm-4">
+        <input type="text" class="form-control form-control-lg" id="User_Form" placeholder="Search for a person.">
+      </div>
 
-  <button type="submit" class="h-100 btn-lg btn-secondary col-sm-2">Drink!</button>
+      <button type="submit" class="h-100 btn-lg btn-secondary col-sm-2">Drink!</button>
     </div>
-    <h3 align="center">Instead of drunk texting your ex, DRINKSTA.</h3>
-    <h3 align="center">Find, Create, Mix, Drink<br><br></h3>  
-<footer class="page-footer font-small" >
 
-<div style="color:grey"class="footer-copyright text-center py-3">© 2018 Copyright: Drinksta Dudes</div>
-</footer>
-<script src="../resources/js/my_scripts.js"></script>
+    <h3 align="center">Instead of drunk texting your ex, DRINKSTA.</h3>
+    <h3 align="center">Find, Create, Mix, Drink<br><br></h3> 
+
+    <footer class="page-footer font-small" >
+      <div style="color:grey"class="footer-copyright text-center py-3">© 2018 Copyright: Drinksta Dudes</div>
+    </footer>
+
+    <script src="../resources/js/my_scripts.js"></script>
   </body>
 </html>
