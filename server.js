@@ -64,7 +64,7 @@ app.get('/home', function(req, res){
 	if(req.cookies.username){
 		u_name = req.cookies.username;
 	}
-	res.render('example_home', {username : u_name});
+	res.render('example_home', {username : u_name, drink: ''});
 });
 
 app.get('/logout', function(req, res){
