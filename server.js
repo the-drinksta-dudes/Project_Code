@@ -79,7 +79,7 @@ app.get('/search', function(req, res){
 	if(req.cookies.username){
 		u_name = req.cookies.username;
 	}
-	res.render('search', {drink: '', username: u_name, no_drink = false});
+	res.render('search', {drink: '', username: u_name});
 });
 
 app.get('/add-drink', function(req, res){
@@ -136,19 +136,18 @@ app.get('/search/get_drink', function(req, res)
     	res.render('search', {
 				my_title: "Drink Search",
 				drink: data[0],
-				no_drink = false,
 				username: ''
 			})
     })
     .catch(error => {
+		// display error message in case an error
 		console.log(error);
-			request.flash('error', err);
-			response.render('search', {
-					my_title: 'Drink Search',
-					drink: '',
-					no_drink = true,
-					username: ''
-			})
+            request.flash('error', err);
+            response.render('search', {
+								my_title: 'Drink Search',
+                drink: '',
+                username: ''
+            })
     });
 
 });
