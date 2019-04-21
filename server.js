@@ -270,7 +270,7 @@ app.get('/home/get_drink', function(req, res)
 
   db.any(drink_search)
     .then(data => {
-    	res.render('example_home', {
+    	res.render('search', {
 				my_title: "Drink Search",
 				drink: data[0],
 				username: ''
