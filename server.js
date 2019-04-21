@@ -251,7 +251,7 @@ app.get('/account', function(req,res){
 		var id = req.cookies.userID;
 		var username = req.cookies.username;
 		var name = req.cookies.name;
-		var query = "select * from drinks inner join fav_drinks on fav_drinks.drink_id = drinks.id where fav_drinks.user_id = '"+id+"';";
+		var query = "select distinct * from drinks inner join fav_drinks on fav_drinks.drink_id = drinks.id where fav_drinks.user_id = '"+id+"';";
 		db.query(query)
 			.then(function(data){
 				// console.log(data);
