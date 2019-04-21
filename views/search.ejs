@@ -25,51 +25,53 @@
 		<% 
 		if(drink) {
 			%>
-		<div class="card card-body">
-						<div class="row">
-							<div class="col-4">
-								<div class="card">
-									<% 
-									var image_src = '';
-									var drink_name = ''
-									if(drink){ 
-										image_src = drink.img_src;
-										drink_name = drink.name;
-									} 
-									%>
-									<img class="card-img-top rounded" id="drink_img" src="<%-image_src %>" alt="A picture of <%-drink_name %>">
+		<div class="card text-white bg-dark mb-3">
+			<div class="card card-body">
+							<div class="row">
+								<div class="col-4">
+									<div class="card">
+										<% 
+										var image_src = '';
+										var drink_name = ''
+										if(drink){ 
+											image_src = drink.img_src;
+											drink_name = drink.name;
+										} 
+										%>
+										<img class="card-img-top rounded" id="drink_img" src="<%-image_src %>" alt="A picture of <%-drink_name %>">
+									</div>
 								</div>
-							</div>
-							<div class="col-8">
-								<div class="table-responsive">
-									<table class="table">
-										<tr>
-											<th>Name</th>
-											<td>
-												<%- drink_name %>
-											<span id="d_name"></span></td>
-										</tr>
-										<tr>
-											<td>Ingredients:</td>
-											<td>
-													<span id="ingredients"></span>
-													<table class="table">
-													<% 
-														if(drink) { 
-															var rows = '';
-															drink.ingredients.forEach(function(item){
-																	rows += '<tr><td>'+ item + '</td></tr>'
-																}); %>
-																<%- rows %> 
-														<% } %>
-													</table>
-											</td>
-										</tr>
-									</table>
+								<div class="col-8">
+									<div class="table-responsive">
+										<table class="table">
+											<tr>
+												<th>Name</th>
+												<td>
+													<%- drink_name %>
+												<span id="d_name"></span></td>
+											</tr>
+											<tr>
+												<td>Ingredients:</td>
+												<td>
+														<span id="ingredients"></span>
+														<table class="table">
+														<% 
+															if(drink) { 
+																var rows = '';
+																drink.ingredients.forEach(function(item){
+																		rows += '<tr><td>'+ item + '</td></tr>'
+																	}); %>
+																	<%- rows %> 
+															<% } %>
+														</table>
+												</td>
+											</tr>
+										</table>
+									</div>
 								</div>
 							</div>
 						</div>
-					</div>
+				</div>
 			</div>
 			<% }%>
   
