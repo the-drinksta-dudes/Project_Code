@@ -11,13 +11,13 @@ app.use(cookieParser());
 var pgp = require('pg-promise')();
 const dbConfig = process.env.DATABASE_URL;
 
-/*const dbConfig = {
-	host: 'localhost',
-	port: 5432,
-	database: 'drinks_db',
-	user: 'postgres',
-	password: 'pwd'
-};*/
+// const dbConfig = {
+// 	host: 'localhost',
+// 	port: 5432,
+// 	database: 'drinksta',
+// 	user: 'postgres',
+// 	password: 'pwd'
+// };
 
 var db = pgp(dbConfig);
 
@@ -246,6 +246,23 @@ app.post('/add-drink', function(req,res){
 		})
 });
 
-//app.listen(3000);
-//console.log('3000 is the magic port');
+app.get('/account', function(req,res){
+	if(req.cookies.userID){
+		var id = req.cookies.userID;
+		var username = req.cookies.username;
+		var name = req.cookies.name;
+		var query = "select * from drinks inner join fav_drinks on fav_drinks.drink_id = drinks.id where fav_drinks.user_id = '"+id+"';";
+		db.query(query)
+			.then(function(data){
+				// console.log(data);
+				res.render('user',{user: name, username: username, drinks: data});
+			});
+	}
+	else{
+		res.render('example_home', {username : ''})
+	}
+});
+
+// app.listen(3000);
+// console.log('3000 is the magic port');
 app.listen(process.env.PORT);
