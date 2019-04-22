@@ -138,7 +138,7 @@ app.get('/search/get_drink', function(req, res)
 			if(req.cookies.username){
 				u_name = req.cookies.username;
 			}
-			res.cookie("drinkID", data[0].ID);
+			res.cookie("drinkID", data[0].id);
     	res.render('search', {
 				my_title: "Drink Search",
 				drink: data[0],
