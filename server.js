@@ -164,7 +164,7 @@ app.post('/search/favorite', function(req, res)
 
 	console.log(drink_id)
 
-	if(req.cookies.user_id){
+	if(req.cookies.userID){
 		user_id = req.cookies.userID;
 		console.log(user_id)
 	}
