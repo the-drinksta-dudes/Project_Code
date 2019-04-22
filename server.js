@@ -335,7 +335,7 @@ app.get('/home/get_ingredient', function(req, res)
     });
 
 });
-app.get('/home/get_ingredient', function(req, res)
+app.get('/home/get_ingredient_button', function(req, res)
 {
 	var ingredient_name = req.query.drinkButton01;
 	var ingredient_search = "select name from drinks where '"+ ingredient_name+"' = ANY(ingredients);";

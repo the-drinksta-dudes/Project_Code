@@ -109,7 +109,7 @@
                       if(drink) { 
                         var rows = '';
                         drink.forEach(function(item){
-                            rows += '<tr><td>'+ item.name + '</td> <td><form action="/search/get_drink" name="drinkButton01" method="get"><input type="submit" value="'+item.name+'" class="h-100 btn-lg btn-secondary" id="drinkSearchButton"></form></td></tr>';
+                            rows += '<tr><td>'+ item.name + '</td> <td><form action="/home/get_ingredient_button" name="drinkButton01" method="get"><input type="submit" value="'+item.name+'" class="h-100 btn-lg btn-secondary" id="drinkSearchButton"></form></td></tr>';
                           }); %>
                           <%- rows %> 
                       <% } %>
