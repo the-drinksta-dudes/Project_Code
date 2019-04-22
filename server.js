@@ -127,7 +127,7 @@ app.get('/submit', function(req,res){
 
 app.get('/search/get_drink', function(req, res)
 {
-	var drink_name = req.query.drinkname.toLowerCase();
+	var drink_name = req.query.drinkname;
 	var drink_search = "select * from drinks where name = '"+ drink_name + "';";
 	console.log(drink_search);
 
@@ -139,7 +139,7 @@ app.get('/search/get_drink', function(req, res)
 			if(req.cookies.username){
 				u_name = req.cookies.username;
 			}
-			
+
     	res.render('search', {
 				my_title: "Drink Search",
 				drink: data[0],
