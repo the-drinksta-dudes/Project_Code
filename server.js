@@ -321,6 +321,32 @@ app.get('/account', function(req,res){
 	}
 });
 
+app.post('/account/remove', function(req,res){
+	if(req.cookies.userID){
+		var id = req.cookies.userID;
+		var username = req.cookies.username;
+		var name = req.cookies.name;
+		var drink_id = req.body.delname;
+
+		var query = "select distinct * from drinks inner join fav_drinks on fav_drinks.drink_id = drinks.id where fav_drinks.user_id = '"+id+"';";
+		var removal = "delete from fav_drinks where user_id = "+ id +" and drink_id = "+ drink_id+";"
+
+		db.task('get-everything', task => {
+			return task.batch([
+					task.any(query),
+					task.any(removal)
+			]);
+		})
+		.then(function(data){
+			// console.log(data);
+			res.render('user',{user: name, username: username, drinks: data[0]});
+		});
+	}
+	else{
+		res.render('example_home', {username : '', drink: ''})
+	}
+});
+
 app.get('/home/get_ingredient', function(req, res)
 {
 	var ingredient_name = req.query.ingredientname;
