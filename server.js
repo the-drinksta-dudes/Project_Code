@@ -134,6 +134,7 @@ app.get('/search/get_drink', function(req, res)
   db.any(drink_search)
     .then(data => {
 			var u_name = '';
+			var drink = data[0]
 			if(req.cookies.username){
 				u_name = req.cookies.username;
 			}
@@ -143,6 +144,10 @@ app.get('/search/get_drink', function(req, res)
 				drink: data[0],
 				username: u_name
 			})
+
+			localStorage.setItem("my_title", "Drink Search");
+			localStorage.setItem("drink", drink);
+			localStorage.setItem("username", u_name);
     })
     .catch(error => {
 		// display error message in case an error
@@ -175,7 +180,11 @@ app.post('/search/favorite', function(req, res)
 
   db.query(favorite_insert)
     .then(data => {
-			
+			res.render('search', {
+				my_title:  localStorage.getItem("my_title"),
+				drink: localStorage.getItem("drink"),
+				username: localStorage.getItem("username")
+			})
     })
     .catch(error => {
 		// display error message in case an error
