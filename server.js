@@ -30,7 +30,7 @@ app.get('/', function(req, res) {
 	var u_name = '';
 	if(req.cookies.username){
 		u_name = req.cookies.username;
-		res.render('example_home', {username : u_name});
+		res.render('example_home', {username : u_name, drink: ''});
 	}
 	else{
 		res.render('login', {message: '', username: ''});
