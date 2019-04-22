@@ -335,7 +335,8 @@ app.get('/home/get_ingredient', function(req, res)
     });
 
 });
-app.get('/home/get_ingredient_button', function(req, res)
+
+app.get('/search/get_drink01', function(req, res)
 {
 	var drink_name = req.query.drinkButton01;
 	var drink_search = "select * from drinks where name = '"+ drink_name + "';";
@@ -372,7 +373,6 @@ app.get('/home/get_ingredient_button', function(req, res)
     });
 
 });
-
 //app.listen(3000);
 //console.log('3000 is the magic port');
 app.listen(process.env.PORT);
