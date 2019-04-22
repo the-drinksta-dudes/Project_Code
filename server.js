@@ -333,8 +333,8 @@ app.post('/account/remove', function(req,res){
 
 		db.task('get-everything', task => {
 			return task.batch([
-					task.any(query),
-					task.any(removal)
+					task.any(removal),
+					task.any(query)
 			]);
 		})
 		.then(function(data){
