@@ -164,12 +164,12 @@ app.post('/search/favorite', function(req, res)
 
 	console.log(drink_id)
 
-	if(req.cookies.user_id){
+	if(req.cookies.userID){
 		user_id = req.cookies.userID;
 		console.log(user_id)
 	}
 
-	var favorite_insert = "insert into fav_drinks values (" + drink_id + "," + user_id + ");";
+	var favorite_insert = "insert into fav_drinks values (" + user_id + "," + drink_id + ");";
 
 	console.log(favorite_insert)
 
