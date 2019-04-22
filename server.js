@@ -193,7 +193,8 @@ app.post('/search/favorite', function(req, res)
 			res.render('search', {
 				my_title: GLOBAL_SEARCH_title,
 				drink: GLOBAL_SEARCH_drink,
-				username: GLOBAL_SEARCH_u_name
+				username: GLOBAL_SEARCH_u_name,
+				login: GLOBAL_SIGNIN_STATUS
 			})
     })
     .catch(error => {
@@ -203,7 +204,8 @@ app.post('/search/favorite', function(req, res)
 			res.render('search', {
 				my_title: GLOBAL_SEARCH_title,
 				drink: GLOBAL_SEARCH_drink,
-				username: GLOBAL_SEARCH_u_name
+				username: GLOBAL_SEARCH_u_name,
+				login: GLOBAL_SIGNIN_STATUS
 			})
     });
 });
