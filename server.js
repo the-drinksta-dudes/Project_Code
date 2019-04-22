@@ -165,7 +165,8 @@ app.post('/search/favorite', function(req, res)
 	console.log(drink_id)
 
 	if(req.cookies.user_id){
-		user_id = req.cookies.user_id;
+		user_id = req.cookies.userID;
+		console.log(user_id)
 	}
 
 	var favorite_insert = "insert into fav_drinks values (" + drink_id + "," + user_id + ");";
