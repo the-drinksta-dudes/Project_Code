@@ -22,6 +22,7 @@
 			</form>
 		</p>
 
+		
 		<% 
 		if(drink) {
 			%>
@@ -69,6 +70,9 @@
 									<p class="card-text"><%-description%></p>
 								</div>
 							</div>
+							<% 
+							if(login == true) {
+							%>
 							<div class="card text-white bg-dark mb-3">
 								<div class="card-body">
 									<p>
@@ -79,6 +83,7 @@
 									</p>
 								</div>
 							</div>
+							<% }%>
 						</div>
 					</div>
 			</div>

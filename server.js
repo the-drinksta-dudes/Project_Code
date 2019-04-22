@@ -25,6 +25,8 @@ GLOBAL_SEARCH_u_name = '';
 GLOBAL_SEARCH_drink = '';
 GLOBAL_SEARCH_title = "";
 
+GLOBAL_SIGNIN_STATUS = false;
+
 // set the view engine to ejs
 app.set('view engine', 'ejs');
 app.use(express.static(__dirname + '/'));
@@ -71,6 +73,7 @@ app.get('/home', function(req, res){
 });
 
 app.get('/logout', function(req, res){
+	GLOBAL_SIGNIN_STATUS = false;
 	res.clearCookie("userID");
 	res.clearCookie("username");
 	res.clearCookie("name");
@@ -82,7 +85,7 @@ app.get('/search', function(req, res){
 	if(req.cookies.username){
 		u_name = req.cookies.username;
 	}
-	res.render('search', {drink: '', username: u_name});
+	res.render('search', {drink: '', username: u_name, login: GLOBAL_SIGNIN_STATUS});
 });
 
 app.get('/add-drink', function(req, res){
@@ -105,6 +108,7 @@ app.get('/submit', function(req,res){
 		.then(function(data){
 			var real_pwd = data[0].password;
 			if(real_pwd == pwd){
+				GLOBAL_SIGNIN_STATUS = true;
 				res.cookie("userID", data[0].user_id);
 				res.cookie("username", data[0].username);
 				res.cookie("name", data[0].name);
@@ -114,6 +118,7 @@ app.get('/submit', function(req,res){
 				})
 			}
 			else{
+				GLOBAL_SIGNIN_STATUS = false;
 				res.render('login', {
 					message: 'warning',
 					username: ''
@@ -121,6 +126,7 @@ app.get('/submit', function(req,res){
 			}
 		})
 		.catch(error => {
+			GLOBAL_SIGNIN_STATUS = false;
 			res.render('login', {
 				message: 'error',
 				username: ''
@@ -148,7 +154,8 @@ app.get('/search/get_drink', function(req, res)
     	res.render('search', {
 				my_title: GLOBAL_SEARCH_title,
 				drink: GLOBAL_SEARCH_drink,
-				username: GLOBAL_SEARCH_u_name
+				username: GLOBAL_SEARCH_u_name,
+				login: GLOBAL_SIGNIN_STATUS
 			})
     })
     .catch(error => {
@@ -158,7 +165,8 @@ app.get('/search/get_drink', function(req, res)
             response.render('search', {
 								my_title: 'Drink Search',
                 drink: '',
-                username: ''
+								username: '',
+								login: GLOBAL_SIGNIN_STATUS
             })
     });
 
