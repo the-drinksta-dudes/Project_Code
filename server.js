@@ -150,14 +150,27 @@ app.get('/search/get_drink', function(req, res)
 				GLOBAL_SEARCH_u_name = req.cookies.username;
 			}
 
-
-    	res.render('search', {
-				my_title: GLOBAL_SEARCH_title,
-				drink: GLOBAL_SEARCH_drink,
-				username: GLOBAL_SEARCH_u_name,
-				login: GLOBAL_SIGNIN_STATUS,
-				drink_found: true
-			})
+			if(data)
+			{
+				res.render('search', {
+					my_title: GLOBAL_SEARCH_title,
+					drink: GLOBAL_SEARCH_drink,
+					username: GLOBAL_SEARCH_u_name,
+					login: GLOBAL_SIGNIN_STATUS,
+					drink_found: true
+				})
+			}
+			else
+			{
+				res.render('search', {
+					my_title: GLOBAL_SEARCH_title,
+					drink: GLOBAL_SEARCH_drink,
+					username: GLOBAL_SEARCH_u_name,
+					login: GLOBAL_SIGNIN_STATUS,
+					drink_found: false
+				})
+			}
+    	
     })
     .catch(error => {
 		// display error message in case an error
