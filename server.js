@@ -21,6 +21,9 @@ const dbConfig = process.env.DATABASE_URL;
 
 var db = pgp(dbConfig);
 
+GLOBAL_SEARCH_u_name = '';
+GLOBAL_SEARCH_drink = '';
+GLOBAL_SEARCH_title = "";
 
 // set the view engine to ejs
 app.set('view engine', 'ejs');
@@ -133,22 +136,20 @@ app.get('/search/get_drink', function(req, res)
 
   db.any(drink_search)
     .then(data => {
-			var u_name = '';
-			var drink = data[0];
+			GLOBAL_SEARCH_u_name = '';
+			GLOBAL_SEARCH_drink = data[0];
+			GLOBAL_SEARCH_title = "Drink Search";
 
 			if(req.cookies.username){
-				u_name = req.cookies.username;
+				GLOBAL_SEARCH_u_name = req.cookies.username;
 			}
 
-    	res.render('search', {
-				my_title: "Drink Search",
-				drink: data[0],
-				username: u_name
-			})
 
-			window.localStorage.setItem("my_title", "Drink Search");
-			window.localStorage.setItem("drink", drink);
-			window.localStorage.setItem("username", u_name);
+    	res.render('search', {
+				my_title: GLOBAL_SEARCH_title,
+				drink: GLOBAL_SEARCH_drink,
+				username: GLOBAL_SEARCH_u_name
+			})
     })
     .catch(error => {
 		// display error message in case an error
@@ -182,9 +183,9 @@ app.post('/search/favorite', function(req, res)
   db.query(favorite_insert)
     .then(data => {
 			res.render('search', {
-				my_title:  window.localStorage.getItem("my_title"),
-				drink: window.localStorage.getItem("drink"),
-				username: window.localStorage.getItem("username")
+				my_title: GLOBAL_SEARCH_title,
+				drink: GLOBAL_SEARCH_drink,
+				username: GLOBAL_SEARCH_u_name
 			})
     })
     .catch(error => {
@@ -192,9 +193,9 @@ app.post('/search/favorite', function(req, res)
 			console.log(error);
 			request.flash('error', err);
 			res.render('search', {
-				my_title:  window.localStorage.getItem("my_title"),
-				drink: window.localStorage.getItem("drink"),
-				username: window.localStorage.getItem("username")
+				my_title: GLOBAL_SEARCH_title,
+				drink: GLOBAL_SEARCH_drink,
+				username: GLOBAL_SEARCH_u_name
 			})
     });
 });
