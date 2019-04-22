@@ -85,7 +85,7 @@ app.get('/search', function(req, res){
 	if(req.cookies.username){
 		u_name = req.cookies.username;
 	}
-	res.render('search', {drink: '', username: u_name, login: GLOBAL_SIGNIN_STATUS});
+	res.render('search', {drink: '', username: u_name, login: GLOBAL_SIGNIN_STATUS, drink_found: true});
 });
 
 app.get('/add-drink', function(req, res){
@@ -155,7 +155,8 @@ app.get('/search/get_drink', function(req, res)
 				my_title: GLOBAL_SEARCH_title,
 				drink: GLOBAL_SEARCH_drink,
 				username: GLOBAL_SEARCH_u_name,
-				login: GLOBAL_SIGNIN_STATUS
+				login: GLOBAL_SIGNIN_STATUS,
+				drink_found: true
 			})
     })
     .catch(error => {
@@ -166,7 +167,8 @@ app.get('/search/get_drink', function(req, res)
 								my_title: 'Drink Search',
                 drink: '',
 								username: '',
-								login: GLOBAL_SIGNIN_STATUS
+								login: GLOBAL_SIGNIN_STATUS,
+								drink_found: false
             })
     });
 
