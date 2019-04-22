@@ -146,9 +146,9 @@ app.get('/search/get_drink', function(req, res)
 				username: u_name
 			})
 
-			localStorage.setItem("my_title", "Drink Search");
-			localStorage.setItem("drink", drink);
-			localStorage.setItem("username", u_name);
+			window.localStorage.setItem("my_title", "Drink Search");
+			window.localStorage.setItem("drink", drink);
+			window.localStorage.setItem("username", u_name);
     })
     .catch(error => {
 		// display error message in case an error
@@ -182,9 +182,9 @@ app.post('/search/favorite', function(req, res)
   db.query(favorite_insert)
     .then(data => {
 			res.render('search', {
-				my_title:  localStorage.getItem("my_title"),
-				drink: localStorage.getItem("drink"),
-				username: localStorage.getItem("username")
+				my_title:  window.localStorage.getItem("my_title"),
+				drink: window.localStorage.getItem("drink"),
+				username: window.localStorage.getItem("username")
 			})
     })
     .catch(error => {
@@ -192,9 +192,9 @@ app.post('/search/favorite', function(req, res)
 			console.log(error);
 			request.flash('error', err);
 			res.render('search', {
-				my_title:  localStorage.getItem("my_title"),
-				drink: localStorage.getItem("drink"),
-				username: localStorage.getItem("username")
+				my_title:  window.localStorage.getItem("my_title"),
+				drink: window.localStorage.getItem("drink"),
+				username: window.localStorage.getItem("username")
 			})
     });
 });
