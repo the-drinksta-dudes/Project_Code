@@ -127,7 +127,7 @@ app.get('/submit', function(req,res){
 
 app.get('/search/get_drink', function(req, res)
 {
-	var drink_name = req.query.drinkname;
+	var drink_name = req.query.drinkname.toLowerCase();
 	var drink_search = "select * from drinks where name = '"+ drink_name + "';";
 	console.log(drink_search);
 
@@ -305,7 +305,7 @@ app.get('/account', function(req,res){
 });
 app.get('/home/get_ingredient', function(req, res)
 {
-	var ingredient_name = req.query.ingredientname;
+	var ingredient_name = req.query.ingredientname.lowerCase();
 	var ingredient_search = "select name from drinks where '"+ ingredient_name+"' = ANY(ingredients);";
 	console.log(ingredient_name);
 
