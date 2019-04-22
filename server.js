@@ -339,7 +339,7 @@ app.post('/account/remove', function(req,res){
 		})
 		.then(function(data){
 			// console.log(data);
-			res.render('user',{user: name, username: username, drinks: data[0]});
+			res.render('user',{user: name, username: username, drinks: data[1]});
 		});
 	}
 	else{
