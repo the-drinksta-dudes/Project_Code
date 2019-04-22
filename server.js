@@ -175,7 +175,11 @@ app.post('/search/favorite', function(req, res)
 
   db.query(favorite_insert)
     .then(data => {
-			
+			res.render('search', {
+				my_title:  localStorage.getItem("my_title"),
+				drink: localStorage.getItem("drink"),
+				username: localStorage.getItem("username")
+			})
     })
     .catch(error => {
 		// display error message in case an error
