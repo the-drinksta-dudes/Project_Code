@@ -109,7 +109,7 @@
                       if(drink) { 
                         var rows = '';
                         drink.forEach(function(item){
-                            rows += '<tr><td>'+ item.name + '</td> <td><a href="https://drinksta.herokuapp.com/search/get_drink?drinkname=asds'+item.name+'" class="btn btn-secondary">'item.name'</a></td></tr>';
+                            rows += '<tr><td>'+ item.name + '</td> <td><a href="https://drinksta.herokuapp.com/search/get_drink?drinkname=asds'+item.name+'" class="btn btn-secondary">'+item.name+'</a></td></tr>';
                           }); %>
                           <%- rows %> 
                       <% } %>
