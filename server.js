@@ -337,23 +337,34 @@ app.get('/home/get_ingredient', function(req, res)
 });
 app.get('/home/get_ingredient_button', function(req, res)
 {
-	var ingredient_name = req.query.drinkButton01;
-	var ingredient_search = "select name from drinks where '"+ ingredient_name+"' = ANY(ingredients);";
-	console.log(ingredient_name);
+	var drink_name = req.query.drinkButton01;
+	var drink_search = "select * from drinks where name = '"+ drink_name + "';";
+	console.log(drink_search);
 
-  db.any(ingredient_search)
+  db.any(drink_search)
     .then(data => {
-    	res.render('example_home', {
-				my_title: "Ingredient Search",
-				drink: data,
-				username: ''
+			var u_name = '';
+			var drink = data[0];
+
+			if(req.cookies.username){
+				u_name = req.cookies.username;
+			}
+
+    	res.render('search', {
+				my_title: "Drink Search",
+				drink: data[0],
+				username: u_name
 			})
+
+			window.localStorage.setItem("my_title", "Drink Search");
+			window.localStorage.setItem("drink", drink);
+			window.localStorage.setItem("username", u_name);
     })
     .catch(error => {
 		// display error message in case an error
 		console.log(error);
             request.flash('error', err);
-            response.render('example_home', {
+            response.render('search', {
 								my_title: 'Drink Search',
                 drink: '',
                 username: ''
