@@ -300,7 +300,7 @@ app.post('/add-drink', function(req,res){
 			if(req.cookies.username){
 				u_name = req.cookies.username;
 			}
-			res.render('example_home', {username: u_name});
+			res.render('example_home', {username: u_name, drink: ''});
 		})
 });
 
@@ -317,7 +317,7 @@ app.get('/account', function(req,res){
 			});
 	}
 	else{
-		res.render('example_home', {username : ''})
+		res.render('example_home', {username : '', drink: ''})
 	}
 });
 
