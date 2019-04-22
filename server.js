@@ -318,6 +318,7 @@ app.get('/account', function(req,res){
 		res.render('example_home', {username : ''})
 	}
 });
+
 app.get('/home/get_ingredient', function(req, res)
 {
 	var ingredient_name = req.query.ingredientname;
