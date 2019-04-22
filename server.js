@@ -189,8 +189,13 @@ app.post('/search/favorite', function(req, res)
     })
     .catch(error => {
 		// display error message in case an error
-		console.log(error);
-            request.flash('error', err);
+			console.log(error);
+			request.flash('error', err);
+			res.render('search', {
+				my_title:  localStorage.getItem("my_title"),
+				drink: localStorage.getItem("drink"),
+				username: localStorage.getItem("username")
+			})
     });
 });
 

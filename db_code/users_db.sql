@@ -14,8 +14,8 @@ CREATE TABLE followers(
 
 CREATE TABLE fav_drinks(
 	user_id INT REFERENCES users(user_id),
-	drink_id INT REFERENCES drinks(ID),
-	PRIMARY KEY (user_id, drink_id)
+	drink_id INT REFERENCES drinks(ID)
+	-- PRIMARY KEY (user_id, drink_id)
 );
 
 -- INSERT INTO users(name, username, password, email)
