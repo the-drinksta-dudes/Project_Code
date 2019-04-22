@@ -335,6 +335,32 @@ app.get('/home/get_ingredient', function(req, res)
     });
 
 });
+app.get('/home/get_ingredient', function(req, res)
+{
+	var ingredient_name = req.query.drinkButton01;
+	var ingredient_search = "select name from drinks where '"+ ingredient_name+"' = ANY(ingredients);";
+	console.log(ingredient_name);
+
+  db.any(ingredient_search)
+    .then(data => {
+    	res.render('example_home', {
+				my_title: "Ingredient Search",
+				drink: data,
+				username: ''
+			})
+    })
+    .catch(error => {
+		// display error message in case an error
+		console.log(error);
+            request.flash('error', err);
+            response.render('example_home', {
+								my_title: 'Drink Search',
+                drink: '',
+                username: ''
+            })
+    });
+
+});
 
 //app.listen(3000);
 //console.log('3000 is the magic port');
