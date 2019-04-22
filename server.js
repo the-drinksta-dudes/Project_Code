@@ -209,7 +209,8 @@ app.post('/search/favorite', function(req, res)
 				my_title: GLOBAL_SEARCH_title,
 				drink: GLOBAL_SEARCH_drink,
 				username: GLOBAL_SEARCH_u_name,
-				login: GLOBAL_SIGNIN_STATUS
+				login: GLOBAL_SIGNIN_STATUS,
+				drink_found: true
 			})
     })
     .catch(error => {
@@ -220,7 +221,8 @@ app.post('/search/favorite', function(req, res)
 				my_title: GLOBAL_SEARCH_title,
 				drink: GLOBAL_SEARCH_drink,
 				username: GLOBAL_SEARCH_u_name,
-				login: GLOBAL_SIGNIN_STATUS
+				login: GLOBAL_SIGNIN_STATUS,
+				drink_found: true
 			})
     });
 });
