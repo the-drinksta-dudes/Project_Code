@@ -24,7 +24,7 @@
 
 		
 		<% 
-		if(drink_found) {
+		if(drink && drink_found) {
 			%>
 		<div class="card text-white bg-dark mb-3">
 			<div class="card-body">
@@ -88,9 +88,7 @@
 					</div>
 			</div>
 		</div>
-		<% }
-		else{
-			%>
+		<% } else if(!drink_found){ %>
 			<div class="card text-white bg-dark mb-3">
 				<div class="card-body">
 					<p class="card-text">Drink not found! Would you like to add it?</p>
