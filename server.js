@@ -150,7 +150,7 @@ app.get('/search/get_drink', function(req, res)
 				GLOBAL_SEARCH_u_name = req.cookies.username;
 			}
 
-			if(data)
+			if(data[0])
 			{
 				res.render('search', {
 					my_title: GLOBAL_SEARCH_title,
