@@ -388,7 +388,7 @@ app.get('/home/get_ingredient', function(req, res)
 
 				my_title: "Ingredient Search",
 				drink: data,
-				username: ''
+				username: '',
 				check: 'fail'
 
 			})
