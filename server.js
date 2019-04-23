@@ -35,7 +35,7 @@ app.get('/', function(req, res) {
 	var u_name = '';
 	if(req.cookies.username){
 		u_name = req.cookies.username;
-		res.render('example_home', {username : u_name, drink: ''});
+		res.render('example_home', {username : u_name, drink: '', check: ''});
 	}
 	else{
 		res.render('login', {message: '', username: ''});
@@ -317,7 +317,7 @@ app.post('/add-drink', function(req,res){
 			if(req.cookies.username){
 				u_name = req.cookies.username;
 			}
-			res.render('example_home', {username: u_name, drink: ''});
+			res.render('example_home', {username: u_name, drink: '', check: ''});
 		})
 });
 
@@ -334,7 +334,7 @@ app.get('/account', function(req,res){
 			});
 	}
 	else{
-		res.render('example_home', {username : '', drink: ''})
+		res.render('example_home', {username : '', drink: '', check:''})
 	}
 });
 
@@ -360,7 +360,7 @@ app.post('/account/remove', function(req,res){
 		});
 	}
 	else{
-		res.render('example_home', {username : '', drink: ''})
+		res.render('example_home', {username : '', drink: '', check: ''})
 	}
 });
 
@@ -402,7 +402,8 @@ app.get('/home/get_ingredient', function(req, res)
             response.render('example_home', {
 								my_title: 'Drink Search',
                 drink: '',
-                username: ''
+                username: '',
+                check: ''
             })
     });
 
