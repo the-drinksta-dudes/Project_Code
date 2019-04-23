@@ -98,7 +98,7 @@
                         drink.forEach(function(item){
                           drink_name=item.name;
                           image_src=item.img_src;
-                            rows += '<tr><td><img class="img-fluid h-100 rounded" "height="20" width="20" src="'+image_src+'" alt="A picture of '+drink_name+'"></td><td>'+ item.name + '</td> <td><a href="https://drinksta.herokuapp.com/search/get_drink?drinkname='+item.name+'" class="btn btn-secondary">'+item.name+'</a></td></tr>';
+                            rows += '<tr><td><img class="img-table rounded"  src="'+image_src+'" alt="A picture of '+drink_name+'"></td><td>'+ item.name + '</td> <td><a href="https://drinksta.herokuapp.com/search/get_drink?drinkname='+item.name+'" class="btn btn-secondary">'+item.name+'</a></td></tr>';
                           }); %>
                           <%- rows %> 
                       <% } %>
