@@ -137,7 +137,7 @@ app.get('/submit', function(req,res){
 app.get('/search/get_drink', function(req, res)
 {
 	var drink_name = req.query.drinkname;
-	var drink_search = "select * from drinks where name = '"+ drink_name + "';";
+	var drink_search = "select * from drinks where name ILIKE '"+ drink_name + "';";
 	console.log(drink_search);
 
   db.any(drink_search)
