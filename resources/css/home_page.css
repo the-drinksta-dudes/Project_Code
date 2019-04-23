@@ -12,3 +12,9 @@ body
 {
 	padding: 0;
 }
+.img-fluid
+{
+	height: 50px;
+	width: 50px;
+
+}
