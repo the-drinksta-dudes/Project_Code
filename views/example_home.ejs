@@ -77,7 +77,18 @@
       <div class="card-body">
           <div class="row">
             <div class="col-4">
-              
+               <%
+                var image_src = '';
+                var drink_name = '';
+                      if(drink) { 
+                        var rows = '';
+                        drink.forEach(function(item){
+                            image_src = item.img_src;
+                            drink_name = item.name;
+                            rows+='<img class="card-img-top rounded" id="drink_img" src="'+image_src+'" alt="A picture of '+drink_name+'">'
+                          }); %>
+                          <%- rows %> 
+                      <% } %>
             </div>
             <div class="col-8">
               <div class="card text-white bg-dark mb-3">
