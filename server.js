@@ -69,7 +69,7 @@ app.get('/home', function(req, res){
 	if(req.cookies.username){
 		u_name = req.cookies.username;
 	}
-	res.render('example_home', {username : u_name, drink: ''});
+	res.render('example_home', {username : u_name, drink: '', check: ''});
 });
 
 app.get('/logout', function(req, res){
@@ -376,6 +376,8 @@ app.get('/home/get_ingredient', function(req, res)
 				my_title: "Ingredient Search",
 				drink: data,
 				username: ''
+			
+
 			})
     })
     .catch(error => {

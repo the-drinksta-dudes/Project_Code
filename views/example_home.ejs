@@ -13,7 +13,7 @@
       
     <link href="../resources/css/home_page.css" rel="stylesheet">
   </head>
-  <body onload="viewSearch('Drink_Div', 1);viewSearch('Ingredient_Div', 0);viewSearch('User_Div', 0);">
+  <body onload="viewSearch('Drink_Div', 1);viewSearch('Ingredient_Div', 0);">
     
     <div class="text-center no-padding" style="padding-top: 10px" >
       <img src="../resources/img/homepage_1.jpg" class="img-fluid rounded" align="center" alt="Cinque Terre">
@@ -29,22 +29,15 @@
 
           <div class="form-check-inline">
             <label class="form-check-label">
-              <input type="radio" class="form-check-input" name="optionsRadios" onclick="viewSearch('Drink_Div', 1);viewSearch('Ingredient_Div', 0);viewSearch('User_Div', 0);"id="optionsRadios1" value="option1" checked>
+              <input type="radio" class="form-check-input" name="optionsRadios" onclick="viewSearch('Drink_Div', 1);viewSearch('Ingredient_Div', 0);"id="optionsRadios1" value="option1" checked>
                 Drinks
             </label>
           </div>
 
           <div class="form-check-inline">
             <label class="form-check-label">
-              <input type="radio" class="form-check-input" name="optionsRadios" onclick="viewSearch('Drink_Div', 0);viewSearch('Ingredient_Div', 1);viewSearch('User_Div', 0);" id="optionsRadios2" value="option2">
+              <input type="radio" class="form-check-input" name="optionsRadios" onclick="viewSearch('Drink_Div', 0);viewSearch('Ingredient_Div', 1);" id="optionsRadios2" value="option2">
               Ingredients
-            </label>
-          </div>
-
-          <div class="form-check-inline">
-            <label class="form-check-label">
-              <input type="radio" class="form-check-input" name="optionsRadios" onclick="viewSearch('Drink_Div', 0);viewSearch('Ingredient_Div', 0);viewSearch('User_Div', 1);" id="optionsRadios3" value="option3" >
-              Users
             </label>
           </div>
 
@@ -121,7 +114,16 @@
           </div>
       </div>
     </div>
-    <%}%>
+    <%
+      if(check=='fail'){%>
+      <div class="card text-white bg-dark mb-3">
+        <div class="card-body">
+          <p class="card-text">Igredient not found! Would you like to add a new drink with the ingredient?</p>
+          <a class="btn btn-primary" href="/add-drink" role="button">Add Drink</a>
+        </div>
+      </div>
+
+        <%}  } %>
       <!-- 
         ABOVE CARD IF SEARCHING FOR DRINKS
     -->
