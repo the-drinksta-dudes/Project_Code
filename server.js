@@ -372,13 +372,27 @@ app.get('/home/get_ingredient', function(req, res)
 
   db.any(ingredient_search)
     .then(data => {
+    	if(data[0])
+			{
     	res.render('example_home', {
+
 				my_title: "Ingredient Search",
 				drink: data,
 				username: ''
 			
 
 			})
+    }
+    else{
+    	res.render('example_home', {
+
+				my_title: "Ingredient Search",
+				drink: data,
+				username: ''
+				check: 'fail'
+
+			})
+    }
     })
     .catch(error => {
 		// display error message in case an error
