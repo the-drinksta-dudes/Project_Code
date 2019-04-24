@@ -281,7 +281,7 @@ app.post('/register', function(req,res){
 				res.cookie("name", name);
 				res.render('login',{
 					message: 'success2',
-					username: u_name
+					username: username
 				});
 			}
 		})
