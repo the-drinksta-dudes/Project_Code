@@ -93,7 +93,7 @@ app.get('/add-drink', function(req, res){
 	if(req.cookies.username){
 		u_name = req.cookies.username;
 	}
-	res.render('add-drink', {username: u_name});
+	res.render('add-drink', {username: u_name, message: ''});
 });
 app.get('/User', function(req, res){
 	res.render('User');
@@ -238,10 +238,11 @@ app.post('/register', function(req,res){
 	var password = req.body.passwordFirst;
 	var cpassword = req.body.passwordConfirm;
 	var age = req.body.age;
+	var good_length = (password.length < 255 && name.length < 255 && username.length < 255 && emailAddress.length < 255);
 	//console.log(name, username, emailAddress, password, cpassword, age);
 	var find_id = "select max(user_id) from users;";
 	var check_user = "select * from users where username = '" + username +"';";
-	if(age == 'Yes' && password == cpassword){
+	if(age == 'Yes' && password == cpassword && good_length){
 		/*db.query(find_id)
 			.then(function(max){
 				var id = max[0].max + 1;
@@ -274,11 +275,18 @@ app.post('/register', function(req,res){
 					.then(function(result){
 						//console.log("success");
 					})
-				res.render('register',{
-					message: 'success',
+				GLOBAL_SIGNIN_STATUS = true;
+				res.cookie("userID", id);
+				res.cookie("username", username);
+				res.cookie("name", name);
+				res.render('login',{
+					message: 'success2',
 					username: u_name
 				});
 			}
+		})
+		.catch(error => {
+			res.render('register',{message: 'error', username: u_name});
 		})
 	}
 	else{
@@ -318,7 +326,13 @@ app.post('/add-drink', function(req,res){
 				u_name = req.cookies.username;
 			}
 			res.render('example_home', {username: u_name, drink: '', check: ''});
-		})
+		});
+		.catch(error=>{
+			if(req.cookies.username){
+				u_name = req.cookies.username;
+			}
+			res.render('add-drink', {username: u_name, message: 'error'});
+		});
 });
 
 app.get('/account', function(req,res){
