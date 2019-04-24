@@ -285,9 +285,6 @@ app.post('/register', function(req,res){
 				});
 			}
 		})
-		.catch(error => {
-			res.render('register',{message: 'error', username: u_name});
-		})
 	}
 	else{
 		res.render('register',{
@@ -319,20 +316,23 @@ app.post('/add-drink', function(req,res){
 	var query =  "INSERT INTO drinks VALUES('" + name + "', nextval('drinks_seq2'),'" + category +"'," 
 						+ array_txt +",'"+description+"','"+image_link+"');";
 	//console.log(query);
-	db.query(query)
-		.then(function(result){
-			var u_name = '';
-			if(req.cookies.username){
-				u_name = req.cookies.username;
-			}
-			res.render('example_home', {username: u_name, drink: '', check: ''});
-		});
-		.catch(error=>{
-			if(req.cookies.username){
+	var length_good = (name.length < 255 && image_link.length < 255 && description.length < 255);
+	if (length_good){
+		db.query(query)
+			.then(function(result){
+				var u_name = '';
+				if(req.cookies.username){
+					u_name = req.cookies.username;
+				}
+				res.render('example_home', {username: u_name, drink: '', check: ''});
+			});
+	}
+	else{
+		if(req.cookies.username){
 				u_name = req.cookies.username;
 			}
 			res.render('add-drink', {username: u_name, message: 'error'});
-		});
+	}
 });
 
 app.get('/account', function(req,res){
