@@ -381,7 +381,7 @@ app.post('/account/remove', function(req,res){
 app.get('/home/get_ingredient', function(req, res)
 {
 	var ingredient_name = req.query.ingredientname;
-	var ingredient_search = "select name, img_src from drinks where '"+ ingredient_name+"' ILIKE ANY(ingredients);";
+	var ingredient_search = "select name, img_src from drinks where '"+ ingredient_name+"' ILIKE ANY(ingredients) ORDER BY name ASC;";
 	console.log(ingredient_name);
 
   db.any(ingredient_search)
