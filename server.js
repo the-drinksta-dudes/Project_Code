@@ -295,9 +295,9 @@ app.post('/register', function(req,res){
 });
 
 app.post('/add-drink', function(req,res){
-	var name = req.body.name.toLowerCase();
+	var name = req.body.name;
 	var category = req.body.category;
-	var ing_list = req.body.ingredients.toLowerCase();
+	var ing_list = req.body.ingredients;
 	var description = req.body.description;
 	var image_link = req.body.imglink;
 	var ingredients = ing_list.split(",").map(function(item){
