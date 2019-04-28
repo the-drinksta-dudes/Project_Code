@@ -351,7 +351,9 @@ app.get('/account', function(req,res){
 		res.render('example_home', {username : '', drink: '', check:''})
 	}
 });
-
+/*
+Function, delete an added favorite drink when the button is clicked on someones account
+*/
 app.post('/account/remove', function(req,res){
 	if(req.cookies.userID){
 		var id = req.cookies.userID;
@@ -377,7 +379,10 @@ app.post('/account/remove', function(req,res){
 		res.render('example_home', {username : '', drink: '', check: ''})
 	}
 });
-
+/*
+Function below, used to grab the drinks which have the selected ingredient from an input.
+used on the example_home.html webpage
+*/
 app.get('/home/get_ingredient', function(req, res)
 {
 	var ingredient_name = req.query.ingredientname;
