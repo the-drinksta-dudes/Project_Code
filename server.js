@@ -98,7 +98,7 @@ app.get('/add-drink', function(req, res){
 app.get('/User', function(req, res){
 	res.render('User');
 });
-
+//submit ffunction, was used to grap the information someone needed to login successfully.
 app.get('/submit', function(req,res){
 	var name = req.query.name;
 	var pwd = req.query.pwd;
@@ -133,7 +133,7 @@ app.get('/submit', function(req,res){
 			});
 		})
 });
-
+//used to search for the drink that the user inputted, push back info to fill out user drink card.
 app.get('/search/get_drink', function(req, res)
 {
 	var drink_name = req.query.drinkname;
@@ -334,7 +334,9 @@ app.post('/add-drink', function(req,res){
 			res.render('add-drink', {username: u_name, message: 'error'});
 	}
 });
-
+/*
+Function: Add a favorite drink to your account, When you press add favorite on a drinks card, it will add the drink to the persons account page.
+*/
 app.get('/account', function(req,res){
 	if(req.cookies.userID){
 		var id = req.cookies.userID;
