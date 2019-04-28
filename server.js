@@ -186,7 +186,7 @@ app.get('/search/get_drink', function(req, res)
     });
 
 });
-
+// Function used to find favorited drinks when you open your account
 app.post('/search/favorite', function(req, res)
 {
 	var user_id = '';
@@ -226,7 +226,7 @@ app.post('/search/favorite', function(req, res)
 			})
     });
 });
-
+//for when you were registering a new account, grabs info and puts it into the database
 app.post('/register', function(req,res){
 	var u_name = '';
 	if(req.cookies.username){
